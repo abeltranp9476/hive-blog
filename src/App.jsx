@@ -1,7 +1,6 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useEffect } from 'react';
 
 import InfiniteScroll from "react-infinite-scroll-component"
-import { useInfiniteQuery } from "@tanstack/react-query";
 
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
@@ -14,21 +13,11 @@ import Main from './features/main/Main';
 import Sidebar from './features/sidebar/Sidebar';
 import Loader from './features/loader/Loader';
 
-import { fetchPosts } from './api/postApi';
-import { useCharacter } from './hooks/useCharacter';
+import { useQueryPosts } from './hooks/useQueryPosts';
 
 function App() {
 
   const theme = createTheme();
-  const [posts, setPosts] = useState([]);
-  const maxPost = 10;
-
-  let page = 0;
-
-  const params = {
-    start: 0,
-    limit: maxPost
-  }
 
   const sections = [
     { title: 'Technology', url: '#' },
@@ -43,38 +32,13 @@ function App() {
     { title: 'Travel', url: '#' },
   ];
 
-
-  const getPosts = async (params) => {
-    const response = await fetchPosts(params);
-    setPosts(response.data);
-  }
-
-  const {
-    data,
-    error,
-    fetchNextPage,
-    hasNextPage,
-    status,
-  } = useInfiniteQuery(
-    ['posts'],
-    ({ pageParam = 0 }) => fetchPosts(params),
-    {
-      getNextPageParam: (lastPage, pages) => pages.length * maxPost - 1,
-    }
-  )
-
-  const queryPosts = useMemo(() => data?.pages.reduce((prev, page) => {
-    return {
-      results: [...prev.data.result, ...page.data.result]
-    }
-  }), [data, posts])
+  const { queryPosts, error, fetchNextPage, hasNextPage, status } = useQueryPosts()
 
 
   useEffect(() => {
-    getPosts(params);
-  }, [])
+    console.log(queryPosts);
+  }, [queryPosts])
 
-  if (!posts) return false;
 
   return (
     <ThemeProvider theme={theme}>

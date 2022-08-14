@@ -26,7 +26,7 @@ function Main(props) {
                 {title}
             </Typography>
             <Divider />
-            {posts?.result?.map((post) => (
+            {posts?.data?.result?.map((post) => (
                 <MyCard
                     key={post.entry_id}
                     title={post.comment.title}

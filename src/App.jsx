@@ -34,19 +34,13 @@ function App() {
 
   const { queryPosts, error, fetchNextPage, hasNextPage, status } = useQueryPosts()
 
-
-  useEffect(() => {
-    console.log(queryPosts);
-  }, [queryPosts])
-
-
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Container maxWidth="lg">
         <Header title="Blog" sections={sections} />
         <InfiniteScroll
-          dataLength={10}
+          dataLength={queryPosts ? queryPosts.data.result.length : 0}
           next={() => fetchNextPage()}
           hasMore={true}
           loader={<Loader />}

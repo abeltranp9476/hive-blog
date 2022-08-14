@@ -18,13 +18,15 @@ export const useQueryPosts = () => {
         status,
     } = useInfiniteQuery(
         ['queryPosts'],
-        ({ pageParam = 0 }) => fetchPosts(params),
+        ({ pageParam = 0 }) => fetchPosts({ start: pageParam, limit: maxPost }),
         {
-            getNextPageParam: (lastPage, pages) => pages.length * maxPost - 1,
+            getNextPageParam: (lastPage, pages) => {
+                return pages.length * maxPost - 1
+            },
         }
     )
 
-    const queryPosts = useMemo(() => data?.pages.reduce((prev, page) => {
+    const queryPosts = useMemo(() => data?.pages?.reduce((prev, page) => {
         return {
             data: {
                 result: [...prev.data.result, ...page.data.result],

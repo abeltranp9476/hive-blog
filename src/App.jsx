@@ -22,7 +22,6 @@ function App() {
   const theme = createTheme();
   const [posts, setPosts] = useState([]);
   const maxPost = 10;
-  const [queryPost, setQueryPost] = useState(0);
 
   let page = 0;
 
@@ -58,26 +57,17 @@ function App() {
     status,
   } = useInfiniteQuery(
     ['posts'],
-    async ({ pageParam = 0 }) => {
-      return await getPosts({ start: pageParam, limit: maxPost })
-    }
-    ,
+    ({ pageParam = 0 }) => fetchPosts(params),
     {
       getNextPageParam: (lastPage, pages) => pages.length * maxPost - 1,
     }
   )
 
-  const characters = useMemo(() => data?.pages?.reduce((prev, page) => {
-    console.log(data)
+  const queryPosts = useMemo(() => data?.pages.reduce((prev, page) => {
     return {
-      //results: [...prev.result, ...page.result]
+      results: [...prev.data.result, ...page.data.result]
     }
-  }), [data])
-
-
-  useEffect(() => {
-    console.log(characters);
-  }, [characters])
+  }), [data, posts])
 
 
   useEffect(() => {
@@ -99,7 +89,7 @@ function App() {
         >
           <main>
             <Grid container spacing={5} sx={{ mt: 3 }}>
-              <Main title="Publicaciones" posts={posts} />
+              <Main title="Publicaciones" posts={queryPosts} />
               <Sidebar
                 title="Acerca de"
                 description="Esto es una descripcion"

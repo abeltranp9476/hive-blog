@@ -9,7 +9,7 @@ import MyCard from '../card/MyCard';
 
 function Main(props) {
 
-    const { posts, title } = props;
+    const { title, posts } = props;
 
     return (
         <Grid
@@ -26,7 +26,7 @@ function Main(props) {
                 {title}
             </Typography>
             <Divider />
-            {posts?.map((post) => (
+            {posts?.result?.map((post) => (
                 <MyCard
                     key={post.entry_id}
                     title={post.comment.title}
@@ -42,7 +42,6 @@ function Main(props) {
 }
 
 Main.propTypes = {
-    posts: PropTypes.arrayOf(PropTypes.string).isRequired,
     title: PropTypes.string.isRequired,
 };
 

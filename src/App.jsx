@@ -46,9 +46,8 @@ function App() {
 
 
   const getPosts = async (params) => {
-    console.log(params);
     const response = await fetchPosts(params);
-    setPosts(response.data.result);
+    setPosts(response.data);
   }
 
   const {
@@ -59,24 +58,31 @@ function App() {
     status,
   } = useInfiniteQuery(
     ['posts'],
-    async ({ pageParam = 0 }) => await getPosts({ start: pageParam, limit: maxPost }),
+    async ({ pageParam = 0 }) => {
+      return await getPosts({ start: pageParam, limit: maxPost })
+    }
+    ,
     {
-      getNextPageParam: () => {
-        return 9;
-      }
+      getNextPageParam: (lastPage, pages) => pages.length * maxPost - 1,
     }
   )
 
-  useEffect(() => {
-    console.log(data);
-  }, [data])
+  const characters = useMemo(() => data?.pages?.reduce((prev, page) => {
+    console.log(data)
+    return {
+      //results: [...prev.result, ...page.result]
+    }
+  }), [data])
 
+
+  useEffect(() => {
+    console.log(characters);
+  }, [characters])
 
 
   useEffect(() => {
     getPosts(params);
   }, [])
-
 
   if (!posts) return false;
 
@@ -88,7 +94,7 @@ function App() {
         <InfiniteScroll
           dataLength={10}
           next={() => fetchNextPage()}
-          hasMore={!!hasNextPage}
+          hasMore={true}
           loader={<Loader />}
         >
           <main>

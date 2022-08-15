@@ -5,11 +5,6 @@ import { fetchPosts } from '../api/postApi';
 export const useQueryPosts = () => {
     const maxPost = 10;
 
-    const params = {
-        start: 0,
-        limit: maxPost
-    }
-
     const {
         data,
         error,
@@ -18,10 +13,10 @@ export const useQueryPosts = () => {
         status,
     } = useInfiniteQuery(
         ['queryPosts'],
-        ({ pageParam = 0 }) => fetchPosts({ start: pageParam, limit: maxPost }),
+        ({ pageParam = 0 }) => fetchPosts({ start: pageParam, limit: maxPost - 1 }),
         {
             getNextPageParam: (lastPage, pages) => {
-                return pages.length * maxPost - 1
+                return (pages.length + 1) * maxPost - 1;
             },
         }
     )

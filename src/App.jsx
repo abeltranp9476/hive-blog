@@ -42,7 +42,7 @@ function App() {
         <InfiniteScroll
           dataLength={queryPosts ? queryPosts.data.result.length : 0}
           next={() => fetchNextPage()}
-          hasMore={true}
+          hasMore={!!hasNextPage}
           loader={<Loader />}
         >
           <main>

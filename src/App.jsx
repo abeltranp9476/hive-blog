@@ -32,7 +32,13 @@ function App() {
     { title: 'Travel', url: '#' },
   ];
 
-  const { queryPosts, error, fetchNextPage, hasNextPage, status } = useQueryPosts()
+  const { data, queryPosts, error, fetchNextPage, hasNextPage, status } = useQueryPosts()
+
+
+  useEffect(() => {
+    console.log(queryPosts);
+  }, [queryPosts])
+
 
   return (
     <ThemeProvider theme={theme}>

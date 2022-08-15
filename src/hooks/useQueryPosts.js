@@ -13,10 +13,13 @@ export const useQueryPosts = () => {
         status,
     } = useInfiniteQuery(
         ['queryPosts'],
-        ({ pageParam = 0 }) => fetchPosts({ start: pageParam, limit: maxPost - 1 }),
+        ({ pageParam = 0 }) => {
+            console.log(pageParam);
+            return fetchPosts({ start: pageParam, limit: maxPost - 1 })
+        },
         {
             getNextPageParam: (lastPage, pages) => {
-                return (pages.length + 1) * maxPost - 1;
+                return (pages.length) * maxPost - 2;
             },
         }
     )
@@ -29,12 +32,12 @@ export const useQueryPosts = () => {
         }
     }), [data])
 
-
     return {
         error,
         fetchNextPage,
         status,
         hasNextPage,
         queryPosts,
+        data,
     }
 }

@@ -36,7 +36,7 @@ function App() {
 
 
   useEffect(() => {
-    console.log(queryPosts);
+    //console.log(queryPosts);
   }, [queryPosts])
 
 
@@ -53,7 +53,8 @@ function App() {
         >
           <main>
             <Grid container spacing={5} sx={{ mt: 3 }}>
-              <Main title="Publicaciones" posts={queryPosts} />
+          <Main title = "Publicaciones" posts = {queryPosts} />
+
               <Sidebar
                 title="Acerca de"
                 description="Esto es una descripcion"

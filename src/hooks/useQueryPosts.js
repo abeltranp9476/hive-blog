@@ -14,7 +14,7 @@ export const useQueryPosts = () => {
     } = useInfiniteQuery(
         ['queryPosts'],
         ({ pageParam = 9 }) => {
-            return fetchPosts({ start: pageParam, limit: maxPost})
+            return fetchPosts({start: pageParam, limit: maxPost})
         },
         {
             getNextPageParam : (lastPage, pages) => {
@@ -34,8 +34,8 @@ export const useQueryPosts = () => {
     return {
         data: {
             result: [
-                ...prev.data.result,
-                ...page.data.result.reverse()
+                        ...prev.data.result,
+                        ...page.data.result
             ]
         }
     }

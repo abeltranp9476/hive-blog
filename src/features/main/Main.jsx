@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
@@ -10,6 +10,16 @@ import MyCard from '../card/MyCard';
 function Main(props) {
 
     const { title, posts } = props;
+    const [postsOrder, setPostsOrder]= React.useState([]);
+
+    useEffect(() => {
+        const reverse = posts?.data?.result.sort(function (a, b) {
+        return a.entry_id - b.entry_id;
+    }).reverse();
+
+        setPostsOrder(reverse);
+    }, [posts])
+    
 
     return (
         <Grid
@@ -26,7 +36,7 @@ function Main(props) {
                 {title}
             </Typography>
             <Divider />
-            {posts?.data?.result?.map((post) => (
+            {postsOrder?.map((post) => (
                 <MyCard
                     key={post.entry_id}
                     title={post.comment.title}

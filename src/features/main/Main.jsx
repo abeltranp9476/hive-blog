@@ -10,16 +10,7 @@ import MyCard from '../card/MyCard';
 function Main(props) {
 
     const { title, posts } = props;
-    const [postsOrder, setPostsOrder]= React.useState([]);
-
-    useEffect(() => {
-        const reverse = posts?.data?.result.sort(function (a, b) {
-        return a.entry_id - b.entry_id;
-    }).reverse();
-
-        setPostsOrder(reverse);
-    }, [posts])
-    
+     
 
     return (
         <Grid
@@ -36,7 +27,7 @@ function Main(props) {
                 {title}
             </Typography>
             <Divider />
-            {postsOrder?.map((post) => (
+                {posts?.data?.result.map((post) => (
                 <MyCard
                     key={post.entry_id}
                     title={post.comment.title}

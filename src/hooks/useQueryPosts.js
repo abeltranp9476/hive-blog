@@ -13,24 +13,34 @@ export const useQueryPosts = () => {
         status,
     } = useInfiniteQuery(
         ['queryPosts'],
-        ({ pageParam = 0 }) => {
-            console.log(pageParam);
-            return fetchPosts({ start: pageParam, limit: maxPost - 1 })
+        ({ pageParam = 9 }) => {
+            return fetchPosts({ start: pageParam, limit: maxPost})
         },
         {
-            getNextPageParam: (lastPage, pages) => {
-                return (pages.length) * maxPost - 2;
+            getNextPageParam : (lastPage, pages) => {
+                const page = (pages.length + 1) * maxPost - 1;                
+
+                if (pages[pages?.length - 1] ?.data?.result?.length !== 0) {
+
+                    return page;
+                }
+
+                return false;              
             },
         }
     )
 
     const queryPosts = useMemo(() => data?.pages?.reduce((prev, page) => {
-        return {
-            data: {
-                result: [...prev.data.result, ...page.data.result],
-            }
+    return {
+        data: {
+            result: [
+                ...prev.data.result,
+                ...page.data.result.reverse()
+            ]
         }
-    }), [data])
+    }
+    }), [data]);
+
 
     return {
         error,

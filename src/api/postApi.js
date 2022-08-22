@@ -1,6 +1,6 @@
 import { api } from '../utils/api';
 
-const hiveUserName = 'kweltatech';
+const hiveUserName = 'abeltranp9476';
 
 export const fetchPosts = async (params) => {
     const jsonrpc = {

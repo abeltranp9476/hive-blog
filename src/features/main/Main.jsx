@@ -35,6 +35,7 @@ function Main(props) {
                     date={post.comment.created}
                     category={post.comment.category}
                     permlink={post.comment.permlink}
+                    image= {post.comment.json_metadata}
                 />
             ))}
         </Grid>

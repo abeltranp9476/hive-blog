@@ -24,14 +24,13 @@ const getImage = () => {
 }
 
     return (
-        <React.Fragment>
+    <React.Fragment sx = {{ mb: 3 }}>
             <CardMedia
             component = "img"
             height = "400"
             image = {getImage()}
             alt = "green iguana"
             />
-
             <CardContent>                       
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                     {date}
@@ -46,7 +45,7 @@ const getImage = () => {
                     {description}
                 </Typography>
             </CardContent>
-            <CardActions>
+                <CardActions>
                 <Button size="small">Leer Mas</Button>
             </CardActions>
         </React.Fragment>

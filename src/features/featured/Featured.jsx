@@ -45,12 +45,8 @@ export default function Featured(props) {
             <Typography component="h1" variant="h3" color="inherit" gutterBottom>
              {title}
             </Typography>
-            <Typography variant="h5" color="inherit" paragraph>
-              Este texto es de prueba
-            </Typography>
-            <Link variant="subtitle1" href="#">
-              Link
-            </Link>
+            
+          
           </Box>
         </Grid>
       </Grid>

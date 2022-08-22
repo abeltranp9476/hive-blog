@@ -7,6 +7,7 @@ import Divider from '@mui/material/Divider';
 import Markdown from '../markdown/Markdown';
 
 import {fetchPost} from './postApi';
+import '../../style.css';
 
 function Post() {
     const { slug } = useParams();
@@ -19,9 +20,7 @@ function Post() {
 
     useEffect(() => {
         loadPost(slug);
-    }, [slug])
-
-   
+    }, [slug])   
 
     return (
         <Grid
@@ -37,11 +36,13 @@ function Post() {
             <Typography variant="h6" gutterBottom>
                 {post?.title ? post?.title : ''}
             </Typography>
+
             <Divider />
+            
             <Markdown className="markdown">
                 {post?.body ? post?.body : ''}
             </Markdown>
-
+            
         </Grid>
 
     );

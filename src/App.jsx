@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
-import { Routes, Route, Link, useParams } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-
 
 import InfiniteScroll from "react-infinite-scroll-component"
 import CssBaseline from '@mui/material/CssBaseline';

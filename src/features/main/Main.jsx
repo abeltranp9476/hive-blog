@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 
-import MyCard from '../card/MyCard';
+import {MyCard} from '../card/MyCard';
 
 
 function Main(props) {
@@ -27,6 +27,7 @@ function Main(props) {
                 {title}
             </Typography>
             <Divider />
+            <Grid container="container" spacing={4}>
                 {posts?.data?.result.map((post) => (
                 <MyCard
                     key={post.entry_id}
@@ -38,6 +39,7 @@ function Main(props) {
                     image= {post.comment.json_metadata}
                 />
             ))}
+            </Grid>
         </Grid>
 
     );

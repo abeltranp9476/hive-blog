@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
+import { Routes, Route, Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
+
 
 import InfiniteScroll from "react-infinite-scroll-component"
 import CssBaseline from '@mui/material/CssBaseline';
@@ -13,6 +15,7 @@ import Main from './features/main/Main';
 import Sidebar from './features/sidebar/Sidebar';
 import Loader from './features/loader/Loader';
 import Featured from './features/featured/Featured';
+import Post from './features/post/Post';
 
 import { useQueryPosts } from './hooks/useQueryPosts';
 import {selectProfile, getProfile} from './features/profile/profileSlice';
@@ -48,32 +51,42 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Container maxWidth="lg">
-      <Header title="Feed pricipal" sections={sections}/>
+      <Header title="Feed pricipal" sections={sections}/>     
 
-        <InfiniteScroll
-          dataLength={queryPosts ? queryPosts.data.result.length : 0}
-          next={() => fetchNextPage()}
-          hasMore={!!hasNextPage}
-          loader={<Loader />}
-        >
+<Routes>
+    <Route path="*" element={<div>404</div>}/>
+
+    <Route path="/" element={
+    <InfiniteScroll dataLength={queryPosts ? queryPosts.data.result.length : 0} next={() => fetchNextPage()} hasMore={!!hasNextPage} loader={<Loader />}>
           <main>
-          <Featured 
-          image={profile?.user?.metadata?.profile?.cover_image}
-          title= {'Blog de ' + profile?.user?.metadata?.profile?.name}
-          />
-          <Grid container spacing={5} sx={{ mt: 3 }}>
-            <Main title = "Desde Hive.io" posts = {queryPosts} />
-            <Sidebar title="Acerca de"/>
-          </Grid>
+            <Featured image={profile?.user?.metadata?.profile?.cover_image} title={'Blog de ' + profile?.user?.metadata?.profile?.name} />
+            <Grid container="container" spacing={5} sx={{ mt: 3 }}>
+              <Main title="Desde Hive.io" posts={queryPosts}/>
+                <Sidebar title="Acerca de"/>
+            </Grid>
           </main>
         </InfiniteScroll>
+      }/>
+
+      <Route path="/:slug" element={
+<main>
+<Grid container="container" spacing={5} sx={{ mt: 3 }}>
+    <Post />
+    <Sidebar title="Acerca de"/>
+</Grid>
+</main>
+} />
+
+</Routes>
+                     
       </Container>
       <Footer
-        title="Footer"
-        description="Something here to give the footer a purpose!"
+        title={'Blog de ' + profile?.user?.metadata?.profile?.name}
+        description={<p>Creado en <strong>ReactJs</strong> sobre <strong>Hive</strong> BlockChain</p>}
       />
     </ThemeProvider>
   )
 }
 
-export default App
+
+export default App;

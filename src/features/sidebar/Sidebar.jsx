@@ -31,7 +31,7 @@ function Sidebar(props) {
                 Enlaces
             </Typography>
 
-            <Link display="block" variant="body1" href={profile?.user?.metadata?.profile?.website}>
+            <Link display="block" variant="body1" target="_blank" href={profile?.user?.metadata?.profile?.website}>
                 {profile?.user?.metadata?.profile?.website}
             </Link>
         </Grid>
@@ -39,7 +39,6 @@ function Sidebar(props) {
 }
 
 Sidebar.propTypes = {
-    description: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
 };
 

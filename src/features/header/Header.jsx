@@ -4,6 +4,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
+import { NavLink } from 'react-router-dom';
 
 function Header(props) {
     const { sections, title } = props;
@@ -12,6 +13,8 @@ function Header(props) {
         <React.Fragment>
             <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <Button size="small">Subscribe</Button>
+
+
                 <Typography
                     component="h2"
                     variant="h5"
@@ -20,8 +23,25 @@ function Header(props) {
                     noWrap
                     sx={{ flex: 1 }}
                 >
+
+<NavLink to="/" style={({ isActive } )=>
+    {               return {
+                        display: "block",
+                        margin: "1rem 0",
+                        color: "blue",
+                        textDecoration: "none",
+                      };
+                    }}>
+
+
                     {title}
+
+                    </NavLink>
+
+
                 </Typography>
+
+
 
                 <Button variant="outlined" size="small">
                     Sign up

@@ -21,11 +21,9 @@ const card = (props) => {
 
 const getImage = () => {
     return JSON.parse(image)['thumbnails'][0];
-
 }
 
     return (
-
         <React.Fragment>
             <CardMedia
             component = "img"
@@ -58,7 +56,7 @@ const getImage = () => {
 export default function MyCard(props) {
 
     return (
-        <Box sx={{ mb: 2, minWidth: 275 }}>
+        <Box md={{ mb: 2, minWidth: 275 }}>
             <Card
                 variant="outlined"
             >

@@ -10,6 +10,7 @@ import Link from '@mui/material/Link';
 import {Avatar} from '../avatar/Avatar';
 
 import {selectProfile} from '../profile/profileSlice';
+import { getTouchRippleUtilityClass } from '@mui/material';
 
 
 function Sidebar(props) {
@@ -20,14 +21,14 @@ function Sidebar(props) {
         <Grid item xs={12} md={4}>
             <Avatar  />
             <Paper elevation={0} sx={{ p: 2, bgcolor: 'grey.200' }}>
-                <Typography variant="h6" gutterBottom>
+                <Typography variant="h6" gutterBottom={getTouchRippleUtilityClass}>
                     {title}
                 </Typography>
             <Typography>{profile?.user?.metadata?.profile?.about}</Typography>
 
             </Paper>
 
-            <Typography variant="h6" gutterBottom="gutterBottom" sx={{ mt: 3 }}>
+            <Typography variant="h6" gutterBottom={true} sx={{ mt: 3 }}>
                 Enlaces
             </Typography>
 

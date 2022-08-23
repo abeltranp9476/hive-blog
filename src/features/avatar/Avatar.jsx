@@ -6,6 +6,6 @@ export const Avatar = () => {
     const profile = useSelector(selectProfile);
 
   return (
-        <img src={profile?.user?.metadata?.profile?.profile_image} width="355"/>
+        <img src={profile?.user?.metadata?.profile?.profile_image} width="100%"/>
   )
 }

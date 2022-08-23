@@ -23,11 +23,11 @@ function Main(props) {
                 },
             }}
         >
-            <Typography variant="h6" gutterBottom>
+            <Typography variant="h6" gutterBottom={true}>
                 {title}
             </Typography>
             <Divider />
-            <Grid container="container" spacing={4}>
+            <Grid container={true} spacing={4}>
                 {posts?.data?.result.map((post) => (
                 <MyCard
                     key={post.entry_id}

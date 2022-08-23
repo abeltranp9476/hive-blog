@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'https://api.hive.blog';
+const API_BASE_URL = import.meta.env.VITE_API_ENDPOINT;
+export const HIVE_USER_ACCOUNT = import.meta.env.VITE_HIVE_ACCOUNT
 const API_TIMEOUT = 120000;
 
 export const api = axios.create({

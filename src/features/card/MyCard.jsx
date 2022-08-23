@@ -12,7 +12,7 @@ export const MyCard = (props) => {
     const { title, description, date, category, permlink, image } = props;
 
     const getImage = () => {
-    return JSON.parse(image)['thumbnails'][0];
+        return JSON.parse(image)['thumbnails'] ? JSON.parse(image)['thumbnails'][0] : '';
     }
 
     return (

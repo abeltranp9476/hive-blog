@@ -33,7 +33,7 @@ export default function Featured(props) {
           backgroundColor: 'rgba(0,0,0,.3)',
         }}
       />
-      <Grid container>
+      <Grid container={true}>
         <Grid item md={6}>
           <Box
             sx={{
@@ -42,7 +42,7 @@ export default function Featured(props) {
               pr: { md: 0 },
             }}
           >
-            <Typography component="h1" variant="h3" color="inherit" gutterBottom>
+            <Typography component="h1" variant="h3" color="inherit" gutterBottom={true}>
              {title}
             </Typography>
             

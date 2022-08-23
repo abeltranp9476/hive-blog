@@ -19,8 +19,13 @@ function Post() {
     }
 
     useEffect(() => {
-        loadPost(slug);
-    }, [slug])   
+        loadPost(slug);        
+    }, [slug])
+
+    useEffect(() => {
+      window.scrollTo(0,0);
+    }, [post])
+    
 
     return (
         <Grid
@@ -33,7 +38,7 @@ function Post() {
                 },
             }}
         >
-            <Typography variant="h6" gutterBottom>
+            <Typography variant="h6" gutterBottom={true}>
                 {post?.title ? post?.title : ''}
             </Typography>
 

@@ -59,7 +59,7 @@ function App() {
     <InfiniteScroll dataLength={queryPosts ? queryPosts.data.result.length : 0} next={() => fetchNextPage()} hasMore={!!hasNextPage} loader={<Loader />}>
           <main>
             <Featured image={profile?.user?.metadata?.profile?.cover_image} title={'Blog de ' + profile?.user?.metadata?.profile?.name} />
-            <Grid container="container" spacing={5} sx={{ mt: 3 }}>
+            <Grid container={true} spacing={5} sx={{ mt: 3 }}>
               <Main title="Desde Hive.io" posts={queryPosts}/>
                 <Sidebar title="Acerca de"/>
             </Grid>
@@ -69,7 +69,7 @@ function App() {
 
       <Route path="/:slug" element={
 <main>
-<Grid container="container" spacing={5} sx={{ mt: 3 }}>
+<Grid container={true} spacing={5} sx={{ mt: 3 }}>
     <Post />
     <Sidebar title="Acerca de"/>
 </Grid>

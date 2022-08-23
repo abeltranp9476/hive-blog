@@ -15,6 +15,7 @@ import Sidebar from './features/sidebar/Sidebar';
 import Loader from './features/loader/Loader';
 import Featured from './features/featured/Featured';
 import Post from './features/post/Post';
+import { Tag } from './features/tag/Tag';
 
 import { useQueryPosts } from './hooks/useQueryPosts';
 import {selectProfile, getProfile} from './features/profile/profileSlice';
@@ -26,16 +27,12 @@ function App() {
   const dispatch = useDispatch();
 
   const sections = [
-    { title: 'Technology', url: '#' },
-    { title: 'Design', url: '#' },
-    { title: 'Culture', url: '#' },
-    { title: 'Business', url: '#' },
-    { title: 'Politics', url: '#' },
-    { title: 'Opinion', url: '#' },
-    { title: 'Science', url: '#' },
-    { title: 'Health', url: '#' },
-    { title: 'Style', url: '#' },
-    { title: 'Travel', url: '#' },
+    { title: 'Blockchain', url: '/tag/blockchain' },
+    { title: 'ReactJs', url: '/tag/reacjs' },
+    { title: 'Laravel', url: '/tag/laravel' },
+    { title: 'Trucos', url: '/tag/trucos' },
+    { title: 'Tutoriales', url: '/tag/tutoriales' },
+    { title: 'Herramientas', url: '/tag/herramientas' },
   ];
 
   const { data, queryPosts, error, fetchNextPage, hasNextPage, status } = useQueryPosts()
@@ -53,8 +50,6 @@ function App() {
       <Header title="Feed pricipal" sections={sections}/>     
 
 <Routes>
-    <Route path="*" element={<div>404</div>}/>
-
     <Route path="/" element={
     <InfiniteScroll dataLength={queryPosts ? queryPosts.data.result.length : 0} next={() => fetchNextPage()} hasMore={!!hasNextPage} loader={<Loader />}>
           <main>
@@ -67,6 +62,16 @@ function App() {
         </InfiniteScroll>
       }/>
 
+      <Route path="/tag/:tag" element={
+        <main>
+        <Grid container={true} spacing={5} sx={{ mt: 3 }}>
+      <Tag />
+      <Sidebar title="Acerca de"/>
+      </Grid>
+      </main>
+      } 
+      />
+
       <Route path="/:slug" element={
 <main>
 <Grid container={true} spacing={5} sx={{ mt: 3 }}>
@@ -75,6 +80,8 @@ function App() {
 </Grid>
 </main>
 } />
+
+<Route path="*" element= {<div>404</div>}/>
 
 </Routes>
                      

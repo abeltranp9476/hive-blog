@@ -9,7 +9,7 @@ import { NavLink } from 'react-router-dom';
 
 
 export const MyCard = (props) => {
-    const { title, description, date, category, permlink, image } = props;
+    const { title, description, date, category, permlink, image, imageDirect } = props;
 
     const getImage = () => {
         return JSON.parse(image)['thumbnails'] ? JSON.parse(image)['thumbnails'][0] : '';
@@ -42,7 +42,7 @@ export const MyCard = (props) => {
                     Continue reading...
                 </Typography>
             </CardContent>
-            <CardMedia component="img" sx={{ width: 160, display: { xs: 'none', sm: 'block' } }} image={getImage()} alt="ejemplo"/>
+            <CardMedia component="img" sx={{ width: 160, display: { xs: 'none', sm: 'block' } }} image={image ? getImage() : imageDirect} alt="ejemplo"/>
         </Card>
     </CardActionArea>
     </NavLink>

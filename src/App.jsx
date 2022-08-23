@@ -62,7 +62,15 @@ function App() {
         </InfiniteScroll>
       }/>
 
-      <Route path="/tag/:tag" element={<Tag />} />
+      <Route path="/tag/:tag" element={
+        <main>
+        <Grid container={true} spacing={5} sx={{ mt: 3 }}>
+      <Tag />
+      <Sidebar title="Acerca de"/>
+      </Grid>
+      </main>
+      } 
+      />
 
       <Route path="/:slug" element={
 <main>

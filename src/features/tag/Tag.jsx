@@ -25,12 +25,6 @@ export const Tag = (props) => {
     }, [tag])    
 
 
-    useEffect(() => {
-      
-    }, [posts])
-    
-
-
   return (
    <Grid
             item

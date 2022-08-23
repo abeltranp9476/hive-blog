@@ -4,7 +4,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
-import { NavLink } from 'react-router-dom';
+import { MyLink } from '../../components/mylink/MyLink';
 
 function Header(props) {
     const { sections, title } = props;
@@ -24,19 +24,9 @@ function Header(props) {
                     sx={{ flex: 1 }}
                 >
 
-<NavLink to="/" style={({ isActive } )=>
-    {               return {
-                        display: "block",
-                        margin: "1rem 0",
-                        color: "blue",
-                        textDecoration: "none",
-                      };
-                    }}>
-
-
+                <MyLink to="/">
                     {title}
-
-                    </NavLink>
+                </MyLink>
 
 
                 </Typography>
@@ -53,16 +43,19 @@ function Header(props) {
                 sx={{ justifyContent: 'space-between', overflowX: 'auto' }}
             >
                 {sections.map((section, id) => (
-                    <Link key={id}
-                        color="inherit"
-                        noWrap
-                        key={section.title}
-                        variant="body2"
-                        href={section.url}
-                        sx={{ p: 1, flexShrink: 0 }}
+
+                    <MyLink key={id} 
+                        to={section.url}                        
+                        key={section.title}                                              
                     >
+                        <Link
+                            sx={{p: 1, flexShrink: 0}}
+                            variant="body2"
+                        >
                         {section.title}
-                    </Link>
+                        </Link>
+                    </MyLink>
+                    
                 ))}
             </Toolbar>
         </React.Fragment>

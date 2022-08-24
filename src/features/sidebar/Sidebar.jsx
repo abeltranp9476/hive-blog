@@ -7,7 +7,7 @@ import Stack from '@mui/material/Stack';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
-import {Avatar} from '../avatar/Avatar';
+import {Avatar} from '../../components/avatar';
 
 import {selectProfile} from '../profile/profileSlice';
 import { getTouchRippleUtilityClass } from '@mui/material';

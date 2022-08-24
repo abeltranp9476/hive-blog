@@ -6,6 +6,7 @@ import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { NavLink } from 'react-router-dom';
+import Markdown from '../markdown/Markdown';
 
 
 export const MyCard = (props) => {
@@ -15,6 +16,7 @@ export const MyCard = (props) => {
         return JSON.parse(image)['thumbnails'] ? JSON.parse(image)['thumbnails'][0] : '';
     }
 
+    
     return (
 <Grid item="item" xs={12} md={12}>
 <NavLink to={'/' + permlink} style={({ isActive } )=>
@@ -36,13 +38,16 @@ export const MyCard = (props) => {
                     {date}
                 </Typography>
                 <Typography variant="subtitle1" paragraph="paragraph">
-                    Texto de prueba
+                    <Markdown 
+                    className="markdown"                   
+                    >
+                    {description.substring(0, 500)}
+                    </Markdown>
                 </Typography>
                 <Typography variant="subtitle1" color="primary">
-                    Continue reading...
+                    Más...
                 </Typography>
             </CardContent>
-            <CardMedia component="img" sx={{ width: 160, display: { xs: 'none', sm: 'block' } }} image={image ? getImage() : imageDirect} alt="ejemplo"/>
         </Card>
     </CardActionArea>
     </NavLink>

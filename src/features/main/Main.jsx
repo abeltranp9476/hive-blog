@@ -32,7 +32,7 @@ function Main(props) {
                 <MyCard
                     key={post.entry_id}
                     title={post.comment.title}
-                    description="Texto de prueba"
+                    description={post.comment.body}
                     date={post.comment.created}
                     category={post.comment.category}
                     permlink={post.comment.permlink}

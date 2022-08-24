@@ -45,7 +45,7 @@ export const Tag = (props) => {
                 <MyCard
                     key={post.id}
                     title={post.title}
-                    description="Texto de prueba"
+                    description={post.body}
                     date={post.created}
                     category={post.category}
                     permlink={post.permlink}

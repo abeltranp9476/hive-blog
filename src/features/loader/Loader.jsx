@@ -4,7 +4,10 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 export default function CircularUnderLoad() {
     return (
-    <Stack alignItems="center">
+    <Stack
+    alignItems="center"
+    marginTop="25%"      
+    >
         <CircularProgress disableShrink />    
     </Stack>
     );

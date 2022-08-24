@@ -29,7 +29,9 @@ function Main(props) {
             <Divider />
             <Grid container={true} spacing={4}>
                 {isLoading ? (
+                    <Grid item="item" xs={12} md={12}>    
                     <FeedSkeleton />
+                    </Grid>
                 ) : (
                     <>
                     {posts?.data?.result.map((post) => (

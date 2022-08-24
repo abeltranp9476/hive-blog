@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 
-import PropTypes from 'prop-types';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
@@ -18,6 +17,7 @@ export const Tag = (props) => {
     const [isLoading, setIsLoading]= useState(true);
 
     const getTag= async (slug) => {
+        setIsLoading(true);
         const content= await fetchTag(slug);
         setPosts(content.data);
     }
@@ -29,9 +29,8 @@ export const Tag = (props) => {
     
     
     useEffect(() => {
-     if(posts?.results?.length) setIsLoading(false);
-    }, [posts])
-    
+     if(posts?.results) setIsLoading(false);
+    }, [posts])  
 
 
   return (
@@ -51,7 +50,9 @@ export const Tag = (props) => {
             <Divider />
             <Grid container={true} spacing={4}>
                 {isLoading ? (
+                    <Grid item="item" xs={12} md={12}>                    
                     <FeedSkeleton />
+                    </Grid>                  
                 ) : (
                     <>
                     {posts?.results?.map((post) => (

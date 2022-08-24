@@ -1,12 +1,10 @@
-import { api } from '../../utils/api';
-
-const hiveUserName = 'abeltranp9476';
+import { api, HIVE_USER_ACCOUNT } from '../../utils/api';
 
 export const fetchUserInfo= async () => {
      const jsonrpc = {
         "jsonrpc": "2.0",
         "method": "bridge.get_profile",
-        "params": [hiveUserName],
+        "params": [HIVE_USER_ACCOUNT],
         "id": 1
     }
 

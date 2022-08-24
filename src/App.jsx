@@ -51,7 +51,11 @@ function App() {
 
 <Routes>
     <Route path="/" element={
-    <InfiniteScroll dataLength={queryPosts ? queryPosts.data.result.length : 0} next={() => fetchNextPage()} hasMore={!!hasNextPage} loader={<Loader />}>
+    <InfiniteScroll 
+    dataLength={queryPosts ? queryPosts.data.result.length : 0} 
+    next={() => fetchNextPage()} hasMore={!!hasNextPage} 
+    loader={<Loader />
+    }>
           <main>
             <Featured image={profile?.user?.metadata?.profile?.cover_image} title={'Blog de ' + profile?.user?.metadata?.profile?.name} />
             <Grid container={true} spacing={5} sx={{ mt: 3 }}>

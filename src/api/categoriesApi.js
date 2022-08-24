@@ -5,7 +5,7 @@ export const categories = [
     },
     {
         title: 'ReactJs',
-        url: '/tag/reacjs'
+        url: '/tag/reactjs'
     },
     {
         title: 'Laravel',

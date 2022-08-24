@@ -4,11 +4,11 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 
-import {MyCard} from '../card/MyCard';
-import { FeedSkeleton } from '../../components/skeletons/FeedSkeleton';
+import {MyCard} from '../myCard';
+import { FeedSkeleton } from '../skeletons/FeedSkeleton';
 
 
-function Main(props) {
+export const Main = (props) => {
 
     const { title, posts, isLoading } = props;   
 

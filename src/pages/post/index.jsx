@@ -4,13 +4,13 @@ import { useParams } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
-import Markdown from '../markdown/Markdown';
+import {Markdown} from '../../components/markdown';
 
 import {fetchPost} from './postApi';
 import '../../style.css';
 import {FeedSkeleton} from '../../components/skeletons/FeedSkeleton'
 
-function Post() {
+export const Post= () => {
     const { slug } = useParams();
     const [post, setPost]= useState([]);
     const [isLoading, setIsLoading]= useState(true);

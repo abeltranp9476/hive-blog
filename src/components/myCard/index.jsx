@@ -4,9 +4,8 @@ import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import { NavLink } from 'react-router-dom';
-import Markdown from '../markdown/Markdown';
+import {Markdown} from '../markdown';
 
 
 export const MyCard = (props) => {

@@ -7,13 +7,13 @@ import Stack from '@mui/material/Stack';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
-import {Avatar} from '../../components/avatar';
+import {Avatar} from '../avatar';
 
-import {selectProfile} from '../profile/profileSlice';
+import {selectProfile} from '../../pages/profile/profileSlice';
 import { getTouchRippleUtilityClass } from '@mui/material';
 
 
-function Sidebar(props) {
+export const Sidebar = (props) => {
     const { title } = props;
     const profile = useSelector(selectProfile);
 

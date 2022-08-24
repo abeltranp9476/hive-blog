@@ -17,7 +17,7 @@ function Copyright() {
     );
 }
 
-function Footer(props) {
+export const Footer = (props) => {
     const { description, title } = props;
 
     return (
@@ -39,5 +39,3 @@ function Footer(props) {
         </Box>
     );
 }
-
-export default Footer;

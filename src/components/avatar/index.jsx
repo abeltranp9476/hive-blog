@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector} from 'react-redux';
-import {selectProfile} from '../../features/profile/profileSlice';
+import {selectProfile} from '../../pages/profile/profileSlice';
 
 export const Avatar = () => { 
     const profile = useSelector(selectProfile);

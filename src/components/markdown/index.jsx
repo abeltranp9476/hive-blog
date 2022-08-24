@@ -45,6 +45,6 @@ const options = {
   },
 };
 
-export default function Markdown(props) {
+export const Markdown = (props) => {
   return <ReactMarkdown options={options} {...props} />;
 }

@@ -8,17 +8,17 @@ import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-import Header from './features/header/Header';
-import Footer from './features/footer/Footer';
-import Main from './features/main/Main';
-import Sidebar from './features/sidebar/Sidebar';
+import {Header} from './components/header';
+import {Footer} from './components/footer';
+import {Main} from './components/main';
+import {Sidebar} from './components/sidebar';
 import { Loader } from './components/loader';
-import Featured from './features/featured/Featured';
-import Post from './features/post/Post';
-import { Tag } from './features/tag/Tag';
+import {Featured} from './components/featured';
+import {Post} from './pages/post';
+import { Tag } from './pages/tag';
 
 import { useQueryPosts } from './hooks/useQueryPosts';
-import {selectProfile, getProfile} from './features/profile/profileSlice';
+import {selectProfile, getProfile} from './pages/profile/profileSlice';
 
 function App() {  
   const theme = createTheme();

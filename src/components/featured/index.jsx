@@ -5,7 +5,7 @@ import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
 
-export default function Featured(props) {
+export const Featured = (props) => {
   const { image, title } = props;
 
   return (

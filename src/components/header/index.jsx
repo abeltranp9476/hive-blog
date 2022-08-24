@@ -4,9 +4,9 @@ import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
-import { MyLink } from '../../components/mylink/MyLink';
+import { MyLink } from '../mylink/MyLink';
 
-function Header(props) {
+export const Header= (props) => {
     const { sections, title } = props;
 
     return (

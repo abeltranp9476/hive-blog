@@ -5,7 +5,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 
-import {MyCard} from '../../features/card/MyCard';
+import {MyCard} from '../../components/myCard';
 
 import {fetchTag} from './tagApi';
 import { FeedSkeleton } from '../../components/skeletons/FeedSkeleton';

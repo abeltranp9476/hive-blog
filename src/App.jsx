@@ -12,7 +12,7 @@ import Header from './features/header/Header';
 import Footer from './features/footer/Footer';
 import Main from './features/main/Main';
 import Sidebar from './features/sidebar/Sidebar';
-import Loader from './features/loader/Loader';
+import { Loader } from './components/loader';
 import Featured from './features/featured/Featured';
 import Post from './features/post/Post';
 import { Tag } from './features/tag/Tag';

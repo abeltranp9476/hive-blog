@@ -21,14 +21,14 @@ export const Post= () => {
     }
 
     useEffect(() => {
+        window.scrollTo(0,0);
         loadPost(slug);        
     }, [slug])
 
     useEffect(() => {
         if(post?.title){
             setIsLoading(false);
-            document.title = post?.title;
-            window.scrollTo(0,0);
+            document.title = post?.title;            
         }
     }, [post])
     

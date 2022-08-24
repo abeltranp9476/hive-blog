@@ -27,6 +27,7 @@ npm install
 **Configuración**
 
 Copiar **.env-copy** y renombrar a **.env**
+
 Configurar la variable de entorno **VITE_HIVE_ACCOUNT** con el nombre de tu usuario.
 
 **Ejecutar en modo desarrollo**

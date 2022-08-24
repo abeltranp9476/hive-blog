@@ -24,7 +24,9 @@ function App() {
   const theme = createTheme();
   const profile = useSelector(selectProfile);
   const dispatch = useDispatch();
-  const[title, setTitle]= useState('');
+  const [isLoading, setIsLoading]= useState(true);
+  const [isLoadingPosts, setIsLoadingPosts]= useState(true);
+
 
   const sections = [
     { title: 'Blockchain', url: '/tag/blockchain' },
@@ -34,20 +36,32 @@ function App() {
     { title: 'Tutoriales', url: '/tag/tutoriales' },
     { title: 'Herramientas', url: '/tag/herramientas' },
   ];
-
-  const { data, queryPosts, error, fetchNextPage, hasNextPage, status } = useQueryPosts()
-
-
+  
   useEffect(() => {    
     dispatch(getProfile());    
   }, [])
 
+const { data, queryPosts, error, fetchNextPage, hasNextPage, status } = useQueryPosts()
+
+
+  useEffect(() => {
+    if(profile?.user?.metadata?.profile?.name) setIsLoading(false);
+  }, [profile])
+  
+  useEffect(() => {
+  if(data) setIsLoadingPosts(false);
+  }, [data])
+  
 
   return (
     <ThemeProvider theme={theme}>            
       <CssBaseline />
+      {isLoading ? (
+        <Loader />
+      ): (
+        <>
       <Container maxWidth="lg">
-      <Header title="Feed pricipal" sections={sections}/>     
+      <Header title="Feed pricipal" sections={sections}/>    
 
 <Routes>
     <Route path="/" element={
@@ -58,9 +72,12 @@ function App() {
     }>
           <main>
             <Featured image={profile?.user?.metadata?.profile?.cover_image} title={'Blog de ' + profile?.user?.metadata?.profile?.name} />
-            <Grid container={true} spacing={5} sx={{ mt: 3 }}>
-              <Main title="Desde Hive.io" posts={queryPosts}/>
-                <Sidebar title="Acerca de"/>
+            <Grid container={true} spacing={5} sx={{ mt: 3 }}>              
+                <Main title="Desde Hive.io"
+                isLoading={isLoadingPosts}
+                posts={queryPosts}
+                />
+              <Sidebar title="Acerca de"/>
             </Grid>
           </main>
         </InfiniteScroll>
@@ -94,6 +111,9 @@ function App() {
         title={'Blog de ' + profile?.user?.metadata?.profile?.name}
         description={<p>Creado en <strong>ReactJs</strong> sobre <strong>Hive</strong> BlockChain</p>}
       />
+      </>
+      )}
+
     </ThemeProvider>
   )
 }

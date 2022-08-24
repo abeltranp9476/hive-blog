@@ -9,11 +9,13 @@ import Divider from '@mui/material/Divider';
 import {MyCard} from '../../features/card/MyCard';
 
 import {fetchTag} from './tagApi';
+import { FeedSkeleton } from '../../components/skeletons/FeedSkeleton';
 
 export const Tag = (props) => {
     const { title } = props;
     const { tag }= useParams();
     const [posts, setPosts]= useState([]);
+    const [isLoading, setIsLoading]= useState(true);
 
     const getTag= async (slug) => {
         const content= await fetchTag(slug);
@@ -23,7 +25,13 @@ export const Tag = (props) => {
     useEffect(() => {
     document.title = tag;
      getTag(tag);          
-    }, [tag])    
+    }, [tag])
+    
+    
+    useEffect(() => {
+     if(posts?.results?.length) setIsLoading(false);
+    }, [posts])
+    
 
 
   return (
@@ -42,7 +50,11 @@ export const Tag = (props) => {
             </Typography>
             <Divider />
             <Grid container={true} spacing={4}>
-                {posts?.results?.map((post) => (
+                {isLoading ? (
+                    <FeedSkeleton />
+                ) : (
+                    <>
+                    {posts?.results?.map((post) => (
                 <MyCard
                     key={post.id}
                     title={post.title}
@@ -53,6 +65,9 @@ export const Tag = (props) => {
                     imageDirect= {post.img_url}
                 />
             ))}
+                    </>
+                )}
+                
             </Grid>
         </Grid>
 

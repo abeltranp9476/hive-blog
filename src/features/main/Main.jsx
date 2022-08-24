@@ -5,12 +5,12 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 
 import {MyCard} from '../card/MyCard';
+import { FeedSkeleton } from '../../components/skeletons/FeedSkeleton';
 
 
 function Main(props) {
 
-    const { title, posts } = props;
-     
+    const { title, posts, isLoading } = props;   
 
     return (
         <Grid
@@ -28,7 +28,11 @@ function Main(props) {
             </Typography>
             <Divider />
             <Grid container={true} spacing={4}>
-                {posts?.data?.result.map((post) => (
+                {isLoading ? (
+                    <FeedSkeleton />
+                ) : (
+                    <>
+                    {posts?.data?.result.map((post) => (
                 <MyCard
                     key={post.entry_id}
                     title={post.comment.title}
@@ -38,15 +42,16 @@ function Main(props) {
                     permlink={post.comment.permlink}
                     image= {post.comment.json_metadata}
                 />
-            ))}
+                ))}
+                    </>
+                )}              
+                    
+                
             </Grid>
         </Grid>
 
     );
 }
 
-Main.propTypes = {
-    title: PropTypes.string.isRequired,
-};
 
 export default Main;

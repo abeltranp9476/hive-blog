@@ -19,6 +19,7 @@ import { Tag } from './pages/tag';
 
 import { useQueryPosts } from './hooks/useQueryPosts';
 import {selectProfile, getProfile} from './pages/profile/profileSlice';
+import {categories} from './api/categoriesApi'
 
 function App() {  
   const theme = createTheme();
@@ -27,15 +28,6 @@ function App() {
   const [isLoading, setIsLoading]= useState(true);
   const [isLoadingPosts, setIsLoadingPosts]= useState(true);
 
-
-  const sections = [
-    { title: 'Blockchain', url: '/tag/blockchain' },
-    { title: 'ReactJs', url: '/tag/reacjs' },
-    { title: 'Laravel', url: '/tag/laravel' },
-    { title: 'Trucos', url: '/tag/trucos' },
-    { title: 'Tutoriales', url: '/tag/tutoriales' },
-    { title: 'Herramientas', url: '/tag/herramientas' },
-  ];
   
   useEffect(() => {    
     dispatch(getProfile());    
@@ -61,7 +53,7 @@ const { data, queryPosts, error, fetchNextPage, hasNextPage, status } = useQuery
       ): (
         <>
       <Container maxWidth="lg">
-      <Header title="Feed pricipal" sections={sections}/>    
+      <Header title="Feed pricipal" sections={categories}/>    
 
 <Routes>
     <Route path="/" element={

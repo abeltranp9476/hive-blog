@@ -1,6 +1,6 @@
 import { api, HIVE_USER_ACCOUNT } from '../../utils/api';
 
-export const fetchTag= async (slug) => {
+export const fetchTag = async (slug) => {
   const jsonrpc = {
     q: "* -dporn type:post tag:" + slug + " author:" + HIVE_USER_ACCOUNT,
     sort: "newest",

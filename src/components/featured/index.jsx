@@ -9,7 +9,7 @@ export const Featured = (props) => {
   const { image, title } = props;
 
   return (
-<Paper
+    <Paper
       sx={{
         position: 'relative',
         backgroundColor: 'grey.800',
@@ -43,10 +43,8 @@ export const Featured = (props) => {
             }}
           >
             <Typography component="h1" variant="h3" color="inherit" gutterBottom={true}>
-             {title}
+              {title}
             </Typography>
-            
-          
           </Box>
         </Grid>
       </Grid>

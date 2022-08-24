@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import {
-fetchUserInfo
+  fetchUserInfo
 } from "./profileApi";
 
 const initialState = {
@@ -14,8 +14,8 @@ export const profileSlice = createSlice({
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
     setProfile: (state, action) => {
-      state.user = action.payload;     
-    },    
+      state.user = action.payload;
+    },
   },
 
 });
@@ -31,9 +31,9 @@ export const selectProfile = (state) => state.profile;
 export default profileSlice.reducer;
 
 
-export const getProfile = () => async (dispatch) => { 
-    const response = await fetchUserInfo();
-    if (response?.data?.result) {   
-      dispatch(setProfile(response?.data?.result));
-    }
+export const getProfile = () => async (dispatch) => {
+  const response = await fetchUserInfo();
+  if (response?.data?.result) {
+    dispatch(setProfile(response?.data?.result));
+  }
 }

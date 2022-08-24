@@ -23,6 +23,7 @@ function Post() {
     }, [slug])
 
     useEffect(() => {
+        if(post?.title) document.title = post?.title;
       window.scrollTo(0,0);
     }, [post])
     

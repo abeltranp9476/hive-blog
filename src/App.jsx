@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Routes, Route } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -20,11 +20,11 @@ import { Tag } from './features/tag/Tag';
 import { useQueryPosts } from './hooks/useQueryPosts';
 import {selectProfile, getProfile} from './features/profile/profileSlice';
 
-function App() {
-
+function App() {  
   const theme = createTheme();
   const profile = useSelector(selectProfile);
   const dispatch = useDispatch();
+  const[title, setTitle]= useState('');
 
   const sections = [
     { title: 'Blockchain', url: '/tag/blockchain' },
@@ -38,13 +38,13 @@ function App() {
   const { data, queryPosts, error, fetchNextPage, hasNextPage, status } = useQueryPosts()
 
 
-  useEffect(() => {
-    dispatch(getProfile());
+  useEffect(() => {    
+    dispatch(getProfile());    
   }, [])
 
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>            
       <CssBaseline />
       <Container maxWidth="lg">
       <Header title="Feed pricipal" sections={sections}/>     

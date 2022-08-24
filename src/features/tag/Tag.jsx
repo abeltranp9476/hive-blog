@@ -21,7 +21,8 @@ export const Tag = (props) => {
     }
 
     useEffect(() => {
-     getTag(tag);
+    document.title = tag;
+     getTag(tag);          
     }, [tag])    
 
 

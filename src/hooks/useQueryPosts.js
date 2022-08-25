@@ -21,7 +21,7 @@ export const useQueryPosts = () => {
                 const page = pages[pages?.length - 1]?.data?.result[pages[pages?.length - 1]?.data?.result.length - 1]?.entry_id - 1;
 
                 if (pages[pages?.length - 1]?.data?.result?.length !== 0 && page > 1) {
-                    console.log(page);
+                    //console.log(page);
                     return page;
                 }
 

@@ -64,6 +64,9 @@ export const Tag = (props) => {
                                 category={post.category}
                                 permlink={post.permlink}
                                 imageDirect={post.img_url}
+                                votes={post.total_votes}
+                                comments={post.children}
+                                amount={post.payout}
                             />
                         ))}
                     </>

@@ -62,7 +62,7 @@ export const Post = () => {
                     <PostStatics
                         votes={post?.active_votes}
                         comments={post?.children}
-                        amount={(parseInt(post?.author_payout_value) + parseInt(post?.curator_payout_value)).toFixed(2)}
+                        amount={(parseFloat(post?.author_payout_value) + parseFloat(post?.curator_payout_value)).toFixed(2)}
                     />
                 </>
             )}

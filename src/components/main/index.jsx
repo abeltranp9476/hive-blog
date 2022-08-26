@@ -44,7 +44,7 @@ export const Main = (props) => {
                                 image={post.comment.json_metadata}
                                 votes={post.comment.active_votes}
                                 comments={post.comment.children}
-                                amount={(parseInt(post.comment.total_payout_value) + parseInt(post.comment.curator_payout_value)).toFixed(2)}
+                                amount={(parseFloat(post.comment.total_payout_value) + parseFloat(post.comment.curator_payout_value)).toFixed(2)}
                             />
                         ))}
                     </>

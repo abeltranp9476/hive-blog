@@ -7,7 +7,6 @@ import Divider from '@mui/material/Divider';
 import { MyCard } from '../myCard';
 import { FeedSkeleton } from '../skeletons/FeedSkeleton';
 
-
 export const Main = (props) => {
 
     const { title, posts, isLoading } = props;
@@ -43,6 +42,9 @@ export const Main = (props) => {
                                 category={post.comment.category}
                                 permlink={post.comment.permlink}
                                 image={post.comment.json_metadata}
+                                votes={post.comment.active_votes}
+                                comments={post.comment.children}
+                                amount={(parseInt(post.comment.total_payout_value) + parseInt(post.comment.curator_payout_value)).toFixed(2)}
                             />
                         ))}
                     </>

@@ -9,6 +9,7 @@ import { Markdown } from '../../components/markdown';
 import { fetchPost } from './postApi';
 import '../../style.css';
 import { FeedSkeleton } from '../../components/skeletons/FeedSkeleton'
+import {PostStatics} from '../../components/postStatics'
 
 export const Post = () => {
     const { slug } = useParams();
@@ -57,6 +58,12 @@ export const Post = () => {
                     <Markdown className="markdown">
                         {post?.body ? post?.body : ''}
                     </Markdown>
+
+                    <PostStatics
+                        votes={post?.active_votes}
+                        comments={post?.children}
+                        amount={(parseInt(post?.author_payout_value) + parseInt(post?.curator_payout_value)).toFixed(2)}
+                    />
                 </>
             )}
         </Grid>

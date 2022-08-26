@@ -6,9 +6,10 @@ import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
 import { NavLink } from 'react-router-dom';
 import { Markdown } from '../markdown';
+import { PostStatics } from '../postStatics';
 
 export const MyCard = (props) => {
-    const { title, description, date, category, permlink, image, imageDirect } = props;
+    const { title, description, date, category, permlink, image, imageDirect, votes, comments, amount } = props;
 
     const getImage = () => {
         return JSON.parse(image)['thumbnails'] ? JSON.parse(image)['thumbnails'][0] : '';
@@ -39,12 +40,14 @@ export const MyCard = (props) => {
                                 >
                                     {description.substring(0, 500)}
                                 </Markdown>
-                            </Typography>
-                            <Typography variant="subtitle1" color="primary">
-                                Más...
-                            </Typography>
-                        </CardContent>
-                    </Card>
+                            </Typography>                            
+                            <PostStatics
+                                votes={votes}
+                                comments={comments}
+                                amount={amount}
+                            />
+                        </CardContent>                        
+                    </Card>                    
                 </CardActionArea>
             </NavLink>
         </Grid>

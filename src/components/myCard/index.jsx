@@ -1,12 +1,14 @@
 import * as React from 'react';
+
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
-import { NavLink } from 'react-router-dom';
 import { Markdown } from '../markdown';
+
 import { PostStatics } from '../postStatics';
+import { MyLink } from '../mylink'
 
 export const MyCard = (props) => {
     const { title, description, date, category, permlink, image, imageDirect, votes, comments, amount } = props;
@@ -17,14 +19,7 @@ export const MyCard = (props) => {
 
     return (
         <Grid item="item" xs={12} md={12}>
-            <NavLink to={'/' + permlink} style={({ isActive }) => {
-                return {
-                    display: "block",
-                    margin: "1rem 0",
-                    color: "green",
-                    textDecoration: "none",
-                };
-            }}>
+            <MyLink to={'/' + permlink}>
                 <CardActionArea>
                     <Card sx={{ display: 'flex' }}>
                         <CardContent sx={{ flex: 1 }}>
@@ -49,7 +44,7 @@ export const MyCard = (props) => {
                         </CardContent>                        
                     </Card>                    
                 </CardActionArea>
-            </NavLink>
+            </MyLink>
         </Grid>
     );
 }

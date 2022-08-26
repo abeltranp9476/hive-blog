@@ -22,7 +22,7 @@ export const PostStatics = (props) => {
       >
         <Item><FavoriteBorder sx={{ fontSize: 18 }} />{Object.keys(votes).length}</Item>
         <Item><ChatBubbleOutline sx={{ fontSize: 18 }} /> {comments}</Item>
-        <Item><SavingsOutlined sx={{ fontSize: 18 }} /> {amount}</Item>
+        <Item><SavingsOutlined sx={{ fontSize: 18 }} /> $ {amount}</Item>
       </Stack>
   )
 }

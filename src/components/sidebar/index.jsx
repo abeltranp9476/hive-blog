@@ -6,8 +6,9 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
-import { MyAvatar } from '../avatar';
+import Avatar from '@mui/material/Avatar';
 
+import { MyAvatar } from '../avatar';
 import { selectProfile } from '../../pages/profile/profileSlice';
 import { getTouchRippleUtilityClass } from '@mui/material';
 

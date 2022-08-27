@@ -1,9 +1,7 @@
 import React from 'react'
 
 import Stack from '@mui/material/Stack';
-import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import { styled } from '@mui/material/styles';
 import { FavoriteBorder, ChatBubbleOutline, SavingsOutlined } from '@mui/icons-material';
 
 

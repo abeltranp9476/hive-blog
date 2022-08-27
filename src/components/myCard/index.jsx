@@ -7,10 +7,11 @@ import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
-import { Markdown } from '../markdown';
 
+import { Markdown } from '../markdown';
 import { PostStatics } from '../postStatics';
 import { MyLink } from '../mylink'
+import { MyAvatar } from '../avatar'
 
 export const MyCard = (props) => {
     
@@ -23,6 +24,7 @@ export const MyCard = (props) => {
 
     return (
         <Grid item="item" xs={12} md={12}>
+            <MyAvatar type="small" />
             <MyLink to={'/' + permlink}>
                 <CardActionArea>
                     <Card sx={{ display: 'flex' }}>

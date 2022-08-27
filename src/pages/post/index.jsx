@@ -1,38 +1,38 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import { Markdown } from '../../components/markdown';
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
+import Divider from '@mui/material/Divider'
 
-import { fetchPost } from './postApi';
-import '../../style.css';
+
+import { fetchPost } from './postApi'
+import '../../style.css'
+import { Markdown } from '../../components/markdown'
 import { FeedSkeleton } from '../../components/skeletons/FeedSkeleton'
-import {PostStatics} from '../../components/postStatics'
+import { PostStatics } from '../../components/postStatics'
 
 export const Post = () => {
-    const { slug } = useParams();
-    const [post, setPost] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
+    const { slug } = useParams()
+    const [post, setPost] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
 
     const loadPost = async (slug) => {
-        const content = await fetchPost(slug);
-        setPost(content.data.result);
+        const content = await fetchPost(slug)
+        setPost(content.data.result)
     }
 
     useEffect(() => {
-        window.scrollTo(0, 0);
-        loadPost(slug);
+        window.scrollTo(0, 0)
+        loadPost(slug)
     }, [slug])
 
     useEffect(() => {
         if (post?.title) {
-            setIsLoading(false);
-            document.title = post?.title;
+            setIsLoading(false)
+            document.title = post?.title
         }
     }, [post])
-
 
     return (
         <Grid
@@ -67,7 +67,6 @@ export const Post = () => {
                 </>
             )}
         </Grid>
-
     );
 }
 

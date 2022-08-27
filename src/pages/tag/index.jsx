@@ -1,30 +1,30 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom'
 
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
+import Divider from '@mui/material/Divider'
 
-import { MyCard } from '../../components/myCard';
-
-import { fetchTag } from './tagApi';
-import { FeedSkeleton } from '../../components/skeletons/FeedSkeleton';
+import { MyCard } from '../../components/myCard'
+import { fetchTag } from './tagApi'
+import { FeedSkeleton } from '../../components/skeletons/FeedSkeleton'
 
 export const Tag = (props) => {
-    const { title } = props;
-    const { tag } = useParams();
-    const [posts, setPosts] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
+    const { title } = props
+    const { tag } = useParams()
+    const [posts, setPosts] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
 
     const getTag = async (slug) => {
-        setIsLoading(true);
-        const content = await fetchTag(slug);
-        setPosts(content.data);
+        setIsLoading(true)
+        const content = await fetchTag(slug)
+        setPosts(content.data)
     }
 
     useEffect(() => {
-        document.title = tag;
-        getTag(tag);
+        window.scrollTo(0, 0)
+        document.title = tag
+        getTag(tag)
     }, [tag])
 
 

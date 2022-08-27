@@ -18,7 +18,7 @@ export const MyAvatar = ({ type='default' }) => {
           direction="row"
           justifyContent="flex-start"
           spacing={2}
-          sx={{ mt: 2, mb: -1 }}
+          sx={{ mt: 2, mb: 0 }}
         >
           <Avatar
             alt={profile?.user?.metadata?.profile?.name}

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
+import moment from 'moment';
+import 'moment/locale/es';
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import Divider from '@mui/material/Divider'
@@ -11,6 +13,8 @@ import '../../style.css'
 import { Markdown } from '../../components/markdown'
 import { FeedSkeleton } from '../../components/skeletons/FeedSkeleton'
 import { PostStatics } from '../../components/postStatics'
+import { MyAvatar } from '../../components/avatar'
+import { Tags } from '../../components/tags';
 
 export const Post = () => {
     const { slug } = useParams()
@@ -49,8 +53,13 @@ export const Post = () => {
                 <FeedSkeleton />
             ) : (
                 <>
+                    <MyAvatar type="small" />
                     <Typography variant="h6" gutterBottom={true}>
                         {post?.title ? post?.title : ''}
+                    </Typography>
+
+                    <Typography variant="subtitle1" color="text.secondary">
+                        {moment(post?.created, "YYYYMMDD").locale('es').fromNow()}
                     </Typography>
 
                     <Divider />
@@ -59,11 +68,13 @@ export const Post = () => {
                         {post?.body ? post?.body : ''}
                     </Markdown>
 
+                    <Tags tags={post?.json_metadata?.tags} />
+
                     <PostStatics
                         votes={post?.active_votes}
                         comments={post?.children}
                         amount={(parseFloat(post?.author_payout_value) + parseFloat(post?.curator_payout_value)).toFixed(2)}
-                    />
+                    />                        
                 </>
             )}
         </Grid>

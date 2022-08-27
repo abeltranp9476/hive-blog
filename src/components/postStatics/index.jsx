@@ -1,28 +1,33 @@
 import React from 'react'
+
 import Stack from '@mui/material/Stack';
 import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
 import { FavoriteBorder, ChatBubbleOutline, SavingsOutlined } from '@mui/icons-material';
 
 
 export const PostStatics = (props) => {    
-    const {votes, amount, comments} = props;
+  const {votes, amount, comments} = props;
 
-    const Item = styled(Paper)(({ theme }) => ({
-        padding: theme.spacing(1),
-        alignItems: 'baseline',
-    }));
+  const styleText = {
+    alignItems: 'center',
+    display: 'flex'
+  }
+
+  const styleIcon = {
+    fontSize: '24px',
+    mr: '5px'
+  }
 
   return (
       <Stack 
        direction="row"       
-       justifyContent="center"
-       alignItems="baseline"
        spacing={2}
       >
-        <Item><FavoriteBorder sx={{ fontSize: 18 }} />{Object.keys(votes).length}</Item>
-        <Item><ChatBubbleOutline sx={{ fontSize: 18 }} /> {comments}</Item>
-        <Item><SavingsOutlined sx={{ fontSize: 18 }} /> $ {amount}</Item>
+      <Typography sx={styleText}><FavoriteBorder sx={styleIcon} />{Object.keys(votes).length}</Typography>
+      <Typography sx={styleText}><ChatBubbleOutline sx={styleIcon} />{comments}</Typography>
+      <Typography sx={styleText}><SavingsOutlined sx={styleIcon} />${amount}</Typography>
       </Stack>
   )
 }

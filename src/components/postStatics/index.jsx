@@ -22,7 +22,8 @@ export const PostStatics = (props) => {
 
   return (
       <Stack 
-       direction="row"       
+       direction="row"
+       justifyContent="flex-start"
        spacing={2}
       >
       <Typography sx={styleText}><FavoriteBorder sx={styleIcon} />{Object.keys(votes).length}</Typography>

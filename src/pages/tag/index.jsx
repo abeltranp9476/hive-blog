@@ -10,7 +10,6 @@ import { fetchTag } from './tagApi'
 import { FeedSkeleton } from '../../components/skeletons/FeedSkeleton'
 
 export const Tag = (props) => {
-    const { title } = props
     const { tag } = useParams()
     const [posts, setPosts] = useState([])
     const [isLoading, setIsLoading] = useState(true)

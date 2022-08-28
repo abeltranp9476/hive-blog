@@ -24,7 +24,7 @@ export const PostStatics = (props) => {
        justifyContent="flex-start"
        spacing={2}
       >
-      <Typography sx={styleText}><FavoriteBorder sx={styleIcon} />{Object.keys(votes).length}</Typography>
+      <Typography sx={styleText}><FavoriteBorder sx={styleIcon} />{Object.keys(votes).length ? Object.keys(votes).length : votes}</Typography>
       <Typography sx={styleText}><ChatBubbleOutline sx={styleIcon} />{comments}</Typography>
       <Typography sx={styleText}><SavingsOutlined sx={styleIcon} />${amount}</Typography>
       </Stack>

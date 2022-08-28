@@ -23,4 +23,4 @@ export const categories = [
         title: 'Herramientas',
         url: '/tag/herramientas'
     },
-];
+]

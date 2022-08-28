@@ -1,7 +1,7 @@
-import axios from 'axios';
+import axios from 'axios'
 
 const API_BASE_URL = import.meta.env.VITE_API_ENDPOINT;
-const API_TIMEOUT = 120000;
+const API_TIMEOUT = 120000
 
 export const HIVE_USER_ACCOUNT = import.meta.env.VITE_HIVE_ACCOUNT
 
@@ -18,15 +18,15 @@ export const api = axios.create({
                     if (!String.prototype.trim) {
                         // eslint-disable-next-line
                         String.prototype.trim = function () {
-                            return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
-                        };
+                            return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '')
+                        }
                     }
-                    data = JSON.parse(data.trim(''));
+                    data = JSON.parse(data.trim(''))
                     // eslint-disable-next-line no-empty
                 } catch (e) {
                 }
             }
-            return data;
+            return data
         },
     ],
 });

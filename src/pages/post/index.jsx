@@ -15,6 +15,7 @@ import { FeedSkeleton } from '../../components/skeletons/FeedSkeleton'
 import { PostStatics } from '../../components/postStatics'
 import { MyAvatar } from '../../components/avatar'
 import { Tags } from '../../components/tags';
+import { useScrollUp } from '../../hooks/useScrollUp'
 
 export const Post = () => {
     const { slug } = useParams()
@@ -26,8 +27,8 @@ export const Post = () => {
         setPost(content.data.result)
     }
 
-    useEffect(() => {
-        window.scrollTo(0, 0)
+    useEffect(() => {       
+        useScrollUp()
         loadPost(slug)
     }, [slug])
 

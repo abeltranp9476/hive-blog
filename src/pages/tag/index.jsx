@@ -8,6 +8,7 @@ import Divider from '@mui/material/Divider'
 import { MyCard } from '../../components/myCard'
 import { fetchTag } from './tagApi'
 import { FeedSkeleton } from '../../components/skeletons/FeedSkeleton'
+import { useScrollUp } from '../../hooks/useScrollUp'
 
 export const Tag = (props) => {
     const { tag } = useParams()
@@ -20,8 +21,8 @@ export const Tag = (props) => {
         setPosts(content.data)
     }
 
-    useEffect(() => {
-        window.scrollTo(0, 0)
+    useEffect(() => {       
+        useScrollUp();
         document.title = tag
         getTag(tag)
     }, [tag])
@@ -30,7 +31,6 @@ export const Tag = (props) => {
     useEffect(() => {
         if (posts?.results) setIsLoading(false);
     }, [posts])
-
 
     return (
         <Grid

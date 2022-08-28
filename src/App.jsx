@@ -1,44 +1,44 @@
-import { useEffect, useState } from 'react';
-import { Routes, Route, useLocation } from "react-router-dom";
-import { useSelector, useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react'
+import { Routes, Route, useLocation } from "react-router-dom"
+import { useSelector, useDispatch } from 'react-redux'
 
 import InfiniteScroll from "react-infinite-scroll-component"
-import CssBaseline from '@mui/material/CssBaseline';
-import Grid from '@mui/material/Grid';
+import CssBaseline from '@mui/material/CssBaseline'
+import Grid from '@mui/material/Grid'
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from '@mui/material/styles'
 
-import { Header } from './components/header';
-import { Footer } from './components/footer';
-import { Main } from './components/main';
-import { Sidebar } from './components/sidebar';
-import { Loader } from './components/loader';
-import { Featured } from './components/featured';
-import { Post } from './pages/post';
-import { Tag } from './pages/tag';
+import { Header } from './components/header'
+import { Footer } from './components/footer'
+import { Main } from './components/main'
+import { Sidebar } from './components/sidebar'
+import { Loader } from './components/loader'
+import { Featured } from './components/featured'
+import { Post } from './pages/post'
+import { Tag } from './pages/tag'
 
-import { useQueryPosts } from './hooks/useQueryPosts';
-import { selectProfile, getProfile } from './pages/profile/profileSlice';
+import { useQueryPosts } from './hooks/useQueryPosts'
+import { selectProfile, getProfile } from './pages/profile/profileSlice'
 import { categories } from './api/categoriesApi'
 
 function App() {
-  const theme = createTheme();
-  const profile = useSelector(selectProfile);
-  const dispatch = useDispatch();
-  const [isLoading, setIsLoading] = useState(true);
-  const [isLoadingPosts, setIsLoadingPosts] = useState(true);
-  const location = useLocation();
+  const theme = createTheme()
+  const profile = useSelector(selectProfile)
+  const dispatch = useDispatch()
+  const [isLoading, setIsLoading] = useState(true)
+  const [isLoadingPosts, setIsLoadingPosts] = useState(true)
+  const location = useLocation()
 
 
   useEffect(() => {
-    dispatch(getProfile());
+    dispatch(getProfile())
   }, [])
 
   const { data, queryPosts, error, fetchNextPage, hasNextPage, status } = useQueryPosts()
 
   useEffect(() => {
     if (profile?.user?.metadata?.profile?.name) {      
-      setIsLoading(false);
+      setIsLoading(false)
     }
   }, [profile])
 

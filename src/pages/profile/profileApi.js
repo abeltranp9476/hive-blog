@@ -1,4 +1,4 @@
-import { api, HIVE_USER_ACCOUNT } from '../../utils/api';
+import { api, HIVE_USER_ACCOUNT } from '../../utils/api'
 
 export const fetchUserInfo = async () => {
     const jsonrpc = {
@@ -8,5 +8,5 @@ export const fetchUserInfo = async () => {
         "id": 1
     }
 
-    return await api.post('', jsonrpc);
+    return await api.post('', jsonrpc)
 }

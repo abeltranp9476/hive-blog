@@ -1,9 +1,9 @@
-import { useMemo } from "react";
-import { useInfiniteQuery } from "@tanstack/react-query";
-import { fetchPosts } from '../api/postApi';
+import { useMemo } from "react"
+import { useInfiniteQuery } from "@tanstack/react-query"
+import { fetchPosts } from '../api/postApi'
 
 export const useQueryPosts = () => {
-    const maxPost = 10;
+    const maxPost = 10
 
     const {
         data,
@@ -18,7 +18,7 @@ export const useQueryPosts = () => {
         },
         {
             getNextPageParam: (lastPage, pages) => {
-                const page = pages[pages?.length - 1]?.data?.result[pages[pages?.length - 1]?.data?.result.length - 1]?.entry_id - 1;
+                const page = pages[pages?.length - 1]?.data?.result[pages[pages?.length - 1]?.data?.result.length - 1]?.entry_id - 1
 
                 if (pages[pages?.length - 1]?.data?.result?.length !== 0 && page > 1) {
                     //console.log(page);

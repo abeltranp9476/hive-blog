@@ -66,7 +66,7 @@ export const Tag = (props) => {
                                 imageDirect={post.img_url}
                                 votes={post.total_votes}
                                 comments={post.children}
-                                amount={post.payout}
+                                amount={post.payout.toFixed(2)}
                             />
                         ))}
                     </>

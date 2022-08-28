@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 import PropTypes from 'prop-types';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
@@ -12,7 +10,7 @@ export const Header = (props) => {
     const { sections, title } = props;
 
     return (
-        <React.Fragment>
+        <>
             <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <Link href={'https://ecency.com/@' + import.meta.env.VITE_HIVE_ACCOUNT + '/rss.xml'}>
                     <Button size="small">
@@ -56,7 +54,7 @@ export const Header = (props) => {
                     </MyLink>
                 ))}
             </Toolbar>
-        </React.Fragment>
+        </>
     );
 }
 

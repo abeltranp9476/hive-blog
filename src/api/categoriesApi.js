@@ -14,11 +14,11 @@ export const categories = [
     {
         title: 'Trucos',
         url: '/tag/trucos'
-    }, 
+    },
     {
         title: 'Tutoriales',
         url: '/tag/tutoriales'
-    }, 
+    },
     {
         title: 'Herramientas',
         url: '/tag/herramientas'

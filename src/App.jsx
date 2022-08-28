@@ -37,21 +37,21 @@ function App() {
   const { data, queryPosts, error, fetchNextPage, hasNextPage, status } = useQueryPosts()
 
   useEffect(() => {
-    if (profile?.user?.metadata?.profile?.name) {      
+    if (profile?.user?.metadata?.profile?.name) {
       setIsLoading(false)
     }
   }, [profile])
 
-  useEffect(() => {    
+  useEffect(() => {
     if (data) setIsLoadingPosts(false)
   }, [data])
-  
-  
+
+
   useEffect(() => {
     if (location.pathname === '/' && profile?.user?.metadata?.profile?.name) document.title = 'Blog de ' + profile?.user?.metadata?.profile?.name
     console.log(location)
   }, [location, profile])
-  
+
 
   return (
     <ThemeProvider theme={theme}>

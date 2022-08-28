@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import moment from 'moment';
-import 'moment/locale/es';
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import Divider from '@mui/material/Divider'
-
 
 import { fetchPost } from './postApi'
 import '../../style.css'
@@ -27,7 +25,7 @@ export const Post = () => {
         setPost(content.data.result)
     }
 
-    useEffect(() => {       
+    useEffect(() => {
         useScrollUp()
         loadPost(slug)
     }, [slug])
@@ -75,11 +73,9 @@ export const Post = () => {
                         votes={post?.active_votes}
                         comments={post?.children}
                         amount={(parseFloat(post?.author_payout_value) + parseFloat(post?.curator_payout_value)).toFixed(2)}
-                    />                        
+                    />
                 </>
             )}
         </Grid>
     );
 }
-
-export default Post;

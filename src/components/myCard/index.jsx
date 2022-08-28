@@ -1,7 +1,4 @@
-import * as React from 'react';
-
 import moment from 'moment';
-import 'moment/locale/es';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
@@ -14,8 +11,6 @@ import { MyLink } from '../mylink'
 import { MyAvatar } from '../avatar'
 
 export const MyCard = (props) => {
-    
-
     const { title, description, date, category, permlink, image, imageDirect, votes, comments, amount } = props;
 
     const getImage = () => {
@@ -41,14 +36,14 @@ export const MyCard = (props) => {
                                 >
                                     {description.substring(0, 500)}
                                 </Markdown>
-                            </Typography>                            
+                            </Typography>
                             <PostStatics
                                 votes={votes}
                                 comments={comments}
                                 amount={amount}
                             />
-                        </CardContent>                        
-                    </Card>                    
+                        </CardContent>
+                    </Card>
                 </CardActionArea>
             </MyLink>
         </Grid>

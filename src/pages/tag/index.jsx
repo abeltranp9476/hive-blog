@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import Grid from '@mui/material/Grid'
@@ -21,12 +21,11 @@ export const Tag = (props) => {
         setPosts(content.data)
     }
 
-    useEffect(() => {       
+    useEffect(() => {
         useScrollUp();
         document.title = tag
         getTag(tag)
     }, [tag])
-
 
     useEffect(() => {
         if (posts?.results) setIsLoading(false);
@@ -73,6 +72,5 @@ export const Tag = (props) => {
 
             </Grid>
         </Grid>
-
     );
 }

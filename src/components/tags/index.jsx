@@ -1,5 +1,3 @@
-import React from 'react'
-
 import Stack from '@mui/material/Stack';
 import Chip from '@mui/material/Chip';
 import Toolbar from '@mui/material/Toolbar';
@@ -13,20 +11,20 @@ export const Tags = ({ tags }) => {
       variant="dense"
       sx={{ height: 70, justifyContent: 'space-between', overflowX: 'auto' }}
     >
-      <Stack 
-      direction="row"
-      justifyContent="center"
-      spacing={2}
-      sx={{ mt: -5 }}
+      <Stack
+        direction="row"
+        justifyContent="center"
+        spacing={2}
+        sx={{ mt: -5 }}
       >
-          {
+        {
           tags?.map((tag) => (
             <MyLink to={'/tag/' + tag}>
-                <Chip label={tag} clickable sx={{ mr: 1}}/>
+              <Chip label={tag} clickable sx={{ mr: 1 }} />
             </MyLink>
-          )) 
-          }
+          ))
+        }
       </Stack>
-      </Toolbar>
+    </Toolbar>
   )
 }

@@ -11,7 +11,7 @@ export const Comment = ({ author, body, picture, depth }) => {
             direction="column"
             sx={{ mt: 3, ml: depth == 1 ? 0 : 2 * depth }}
         >
-            <MyAvatar type="small" userName={author + ' ' + depth} picture={picture} />
+            <MyAvatar type="small" userName={author} picture={picture} />
             <Typography variant="subtitle1">
                 <Markdown className="markdown">
                     {body}

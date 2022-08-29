@@ -9,7 +9,7 @@ Blog desarrollado en ReactJs sobre Hive Blockchain
 - Show a list post of category
 
 # Detalles
-Sobre Hive Blockchain corre todo un ecosistema de aplicaciones descentralizadas. Una de ellas, y las que más utilizo es Ecency. Una red social con una perspectiva totalmente distita a las convecionales.
+Sobre Hive Blockchain corre todo un ecosistema de aplicaciones descentralizadas. Una de ellas, y la que más utilizo es Ecency. Una red social con una perspectiva totalmente distinta a las convecionales.
 
 Este cliente creado en ReactJS con Vite, utiliza el api pública de Hive y Ecency para brindarte la posibilidad de tener tu propio blog, con las publicaciones de tu perfil en Ecency (o cualquier otro cliente que consuma de la Blockchain de Hive).
 

@@ -6,7 +6,8 @@ Blog desarrollado en ReactJs sobre Hive Blockchain
 - Skeletons
 - Infinite scroll on feed
 - Show a single post
-- Show a list post of category
+- Show a posts list of category
+- Show post comments
 
 # Detalles
 Sobre Hive Blockchain corre todo un ecosistema de aplicaciones descentralizadas. Una de ellas, y la que más utilizo es Ecency. Una red social con una perspectiva totalmente distinta a las convecionales.

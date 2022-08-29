@@ -9,7 +9,7 @@ export const Comment = ({ author, body, picture, childrenComment, depth }) => {
         <Stack
             spacing={2}
             direction="column"
-            sx={{ mt: 3, ml: depth == 1 ? 0 : 3 * depth }}
+            sx={{ mt: 3, ml: depth == 1 ? 0 : 2 * depth }}
         >
             <MyAvatar type="small" userName={author + ' ' + depth} picture={picture} />
             <Typography variant="subtitle1">

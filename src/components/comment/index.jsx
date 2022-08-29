@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography';
 import { Markdown } from '../markdown';
 import { MyAvatar } from '../avatar'
 
-export const Comment = ({ author, body, picture, childrenComment, depth }) => {
+export const Comment = ({ author, body, picture, depth }) => {
     return (
         <Stack
             spacing={2}

@@ -64,7 +64,6 @@ export const Comments = ({ numComments, comments, handleLoadComments, isLoadingC
                                                     body={comments[key]?.body}
                                                     picture={'https://images.ecency.com/webp/u/' + comments[key]?.author + '/avatar/medium'}
                                                     depth={comments[key]?.depth}
-                                                    childrenComment={comments[key]?.children}
                                                 />
                                             }
                                         </>

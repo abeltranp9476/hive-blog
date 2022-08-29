@@ -89,7 +89,7 @@ export const Post = () => {
                     />
 
                     <Comments
-                        numComments={1}
+                        numComments={post?.children}
                         handleLoadComments={handleLoadComments}
                         comments={comments}
                         isLoadingComments={isLoadingComments}

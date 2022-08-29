@@ -5,12 +5,12 @@ import Stack from '@mui/material/Stack';
 
 import { selectProfile } from '../../pages/profile/profileSlice';
 
-export const MyAvatar = ({ type = 'default' }) => {
+export const MyAvatar = ({ type = 'default', userName = null, picture = null }) => {
   const profile = useSelector(selectProfile);
 
   return (
     type === 'default' ? (
-      <img src={profile?.user?.metadata?.profile?.profile_image} width="100%" />
+      <img src={picture ? picture : profile?.user?.metadata?.profile?.profile_image} width="100%" />
     ) : (
       <Stack
         direction="row"
@@ -19,12 +19,12 @@ export const MyAvatar = ({ type = 'default' }) => {
         sx={{ mt: 2, mb: 0 }}
       >
         <Avatar
-          alt={profile?.user?.metadata?.profile?.name}
-          src={profile?.user?.metadata?.profile?.profile_image}
+          alt={userName ? userName : profile?.user?.metadata?.profile?.name}
+          src={picture ? picture : profile?.user?.metadata?.profile?.profile_image}
           sx={{ width: 24, height: 24, mr: -1 }}
         />
         <Typography variant="body1">
-          {profile?.user?.name}
+          {userName ? userName : profile?.user?.name}
         </Typography>
       </Stack>
     )

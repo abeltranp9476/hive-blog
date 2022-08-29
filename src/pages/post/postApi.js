@@ -13,3 +13,17 @@ export const fetchPost = async (slug) => {
 
   return await api.post('', jsonrpc)
 }
+
+export const fecthComments = async (slug) => {
+  const jsonrpc = {
+    "jsonrpc": "2.0",
+    "method": "bridge.get_discussion",
+    "params": {
+      "author": HIVE_USER_ACCOUNT,
+      "permlink": slug
+    },
+    "id": 1
+  }
+
+  return await api.post('', jsonrpc)
+}

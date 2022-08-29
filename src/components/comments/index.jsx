@@ -63,7 +63,8 @@ export const Comments = ({ numComments, comments, handleLoadComments, isLoadingC
                                                     author={comments[key]?.author}
                                                     body={comments[key]?.body}
                                                     picture={'https://images.ecency.com/webp/u/' + comments[key]?.author + '/avatar/medium'}
-                                                    replies={comments[key]?.replies}
+                                                    depth={comments[key]?.depth}
+                                                    childrenComment={comments[key]?.children}
                                                 />
                                             }
                                         </>

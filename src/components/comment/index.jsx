@@ -4,14 +4,14 @@ import Typography from '@mui/material/Typography';
 import { Markdown } from '../markdown';
 import { MyAvatar } from '../avatar'
 
-export const Comment = ({ author, body, picture, replies }) => {
+export const Comment = ({ author, body, picture, childrenComment, depth }) => {
     return (
         <Stack
             spacing={2}
             direction="column"
-            sx={{ mt: 3, ml: replies ? 6 : 0 }}
+            sx={{ mt: 3, ml: depth == 1 ? 0 : 3 * depth }}
         >
-            <MyAvatar type="small" userName={author} picture={picture} />
+            <MyAvatar type="small" userName={author + ' ' + depth} picture={picture} />
             <Typography variant="subtitle1">
                 <Markdown className="markdown">
                     {body}

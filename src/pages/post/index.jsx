@@ -6,7 +6,7 @@ import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import Divider from '@mui/material/Divider'
 
-import { fetchPost } from './postApi'
+import { fetchPost, fecthComments } from './postApi'
 import '../../style.css'
 import { Markdown } from '../../components/markdown'
 import { FeedSkeleton } from '../../components/skeletons/FeedSkeleton'
@@ -14,15 +14,25 @@ import { PostStatics } from '../../components/postStatics'
 import { MyAvatar } from '../../components/avatar'
 import { Tags } from '../../components/tags';
 import { useScrollUp } from '../../hooks/useScrollUp'
+import { Comments } from '../../components/comments';
 
 export const Post = () => {
     const { slug } = useParams()
     const [post, setPost] = useState([])
+    const [comments, setComments] = useState([])
     const [isLoading, setIsLoading] = useState(true)
+    const [isLoadingComments, setIsLoadingComments] = useState(false)
 
     const loadPost = async (slug) => {
         const content = await fetchPost(slug)
         setPost(content.data.result)
+    }
+
+    const handleLoadComments = async () => {
+        setIsLoadingComments(true)
+        const content = await fecthComments(slug)
+        setComments(content.data.result)
+        setIsLoadingComments(false)
     }
 
     useEffect(() => {
@@ -36,6 +46,9 @@ export const Post = () => {
             document.title = post?.title
         }
     }, [post])
+
+    useEffect(() => {
+    }, [comments])
 
     return (
         <Grid
@@ -73,6 +86,13 @@ export const Post = () => {
                         votes={post?.active_votes}
                         comments={post?.children}
                         amount={(parseFloat(post?.author_payout_value) + parseFloat(post?.curator_payout_value)).toFixed(2)}
+                    />
+
+                    <Comments
+                        numComments={1}
+                        handleLoadComments={handleLoadComments}
+                        comments={comments}
+                        isLoadingComments={isLoadingComments}
                     />
                 </>
             )}

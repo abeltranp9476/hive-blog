@@ -51,7 +51,6 @@ function App() {
 
   useEffect(() => {
     if (location.pathname === '/' && profile?.user?.metadata?.profile?.name) document.title = 'Blog de ' + profile?.user?.metadata?.profile?.name
-    console.log(location)
   }, [location, profile])
 
 

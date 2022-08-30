@@ -15,6 +15,7 @@ import { MyAvatar } from '../../components/avatar'
 import { Tags } from '../../components/tags';
 import { useScrollUp } from '../../hooks/useScrollUp'
 import { Comments } from '../../components/comments';
+import { Error404 } from '../error404'
 
 export const Post = () => {
     const { slug } = useParams()
@@ -22,10 +23,17 @@ export const Post = () => {
     const [comments, setComments] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const [isLoadingComments, setIsLoadingComments] = useState(false)
+    const [is404, setIs404] = useState(false);
 
     const loadPost = async (slug) => {
+        setIs404(false)
         const content = await fetchPost(slug)
-        setPost(content.data.result)
+        if (content.data.result) {
+            setPost(content.data.result)
+        } else {
+            setPost(content.data)
+        }
+
     }
 
     const handleLoadComments = async () => {
@@ -44,6 +52,9 @@ export const Post = () => {
         if (post?.title) {
             setIsLoading(false)
             document.title = post?.title
+        } else if (post?.error?.code) {
+            setIsLoading(false)
+            setIs404(true)
         }
     }, [post])
 
@@ -65,35 +76,35 @@ export const Post = () => {
                 <FeedSkeleton />
             ) : (
                 <>
-                    <MyAvatar type="small" />
-                    <Typography variant="h6" gutterBottom={true}>
-                        {post?.title ? post?.title : ''}
-                    </Typography>
-
-                    <Typography variant="subtitle1" color="text.secondary">
-                        {moment(post?.created, "YYYYMMDD").locale('es').fromNow()}
-                    </Typography>
-
-                    <Divider />
-
-                    <Markdown className="markdown">
-                        {post?.body ? post?.body : ''}
-                    </Markdown>
-
-                    <Tags tags={post?.json_metadata?.tags} />
-
-                    <PostStatics
-                        votes={post?.active_votes}
-                        comments={post?.children}
-                        amount={(parseFloat(post?.author_payout_value) + parseFloat(post?.curator_payout_value)).toFixed(2)}
-                    />
-
-                    <Comments
-                        numComments={post?.children}
-                        handleLoadComments={handleLoadComments}
-                        comments={comments}
-                        isLoadingComments={isLoadingComments}
-                    />
+                    {is404 ? (
+                        <Error404 />
+                    ) : (
+                        <>
+                            <MyAvatar type="small" />
+                            <Typography variant="h6" gutterBottom={true}>
+                                {post?.title ? post?.title : ''}
+                            </Typography>
+                            <Typography variant="subtitle1" color="text.secondary">
+                                {moment(post?.created, "YYYYMMDD").locale('es').fromNow()}
+                            </Typography>
+                            <Divider />
+                            <Markdown className="markdown">
+                                {post?.body ? post?.body : ''}
+                            </Markdown>
+                            <Tags tags={post?.json_metadata?.tags} />
+                            <PostStatics
+                                votes={post?.active_votes}
+                                comments={post?.children}
+                                amount={(parseFloat(post?.author_payout_value) + parseFloat(post?.curator_payout_value)).toFixed(2)}
+                            />
+                            <Comments
+                                numComments={post?.children}
+                                handleLoadComments={handleLoadComments}
+                                comments={comments}
+                                isLoadingComments={isLoadingComments}
+                            />
+                        </>
+                    )}
                 </>
             )}
         </Grid>

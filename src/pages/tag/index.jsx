@@ -14,8 +14,10 @@ export const Tag = (props) => {
     const { tag } = useParams()
     const [posts, setPosts] = useState([])
     const [isLoading, setIsLoading] = useState(true)
+    const [isNotResults, setIsNotResults] = useState(false)
 
     const getTag = async (slug) => {
+        setIsNotResults(false)
         setIsLoading(true)
         const content = await fetchTag(slug)
         setPosts(content.data)
@@ -28,7 +30,12 @@ export const Tag = (props) => {
     }, [tag])
 
     useEffect(() => {
-        if (posts?.results) setIsLoading(false);
+        if (posts?.results?.length) {
+            setIsLoading(false);
+        } else {
+            setIsLoading(false);
+            setIsNotResults(true)
+        }
     }, [posts])
 
     return (
@@ -53,20 +60,29 @@ export const Tag = (props) => {
                     </Grid>
                 ) : (
                     <>
-                        {posts?.results?.map((post) => (
-                            <MyCard
-                                key={post.id}
-                                title={post.title}
-                                description={post.body}
-                                date={post.created}
-                                category={post.category}
-                                permlink={post.permlink}
-                                imageDirect={post.img_url}
-                                votes={post.total_votes}
-                                comments={post.children}
-                                amount={post.payout.toFixed(2)}
-                            />
-                        ))}
+                        {isNotResults ? (
+                            <Grid item="item" xs={12} md={12}>
+                                <Typography variant="h6">
+                                    No hay publicaciones
+                                </Typography>
+                            </Grid>
+                        ) : (
+                            posts?.results?.map((post) => (
+                                <MyCard
+                                    key={post.id}
+                                    title={post.title}
+                                    description={post.body}
+                                    date={post.created}
+                                    category={post.category}
+                                    permlink={post.permlink}
+                                    imageDirect={post.img_url}
+                                    votes={post.total_votes}
+                                    comments={post.children}
+                                    amount={post.payout.toFixed(2)}
+                                />
+                            ))
+                        )}
+
                     </>
                 )}
 

@@ -7,6 +7,7 @@ import CssBaseline from '@mui/material/CssBaseline'
 import Grid from '@mui/material/Grid'
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles'
+import Stack from '@mui/material/Stack';
 
 import { Header } from './components/header'
 import { Footer } from './components/footer'
@@ -20,6 +21,7 @@ import { Tag } from './pages/tag'
 import { useQueryPosts } from './hooks/useQueryPosts'
 import { selectProfile, getProfile } from './pages/profile/profileSlice'
 import { categories } from './api/categoriesApi'
+import { Error404 } from './pages/error404'
 
 function App() {
   const theme = createTheme()
@@ -103,7 +105,7 @@ function App() {
                 </main>
               } />
 
-              <Route path="*" element={<div>404</div>} />
+              <Route path="*" element={<Error404 />} />
 
             </Routes>
 

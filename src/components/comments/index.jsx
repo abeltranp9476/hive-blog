@@ -20,7 +20,7 @@ export const Comments = ({ numComments, comments, handleLoadComments, isLoadingC
     }, [comments])
 
     return (
-        numComments && !isShow ? (
+        (numComments && !isShow) ? (
             <Stack
                 spacing={2}
                 direction="row"
@@ -40,7 +40,7 @@ export const Comments = ({ numComments, comments, handleLoadComments, isLoadingC
             ) : (
                 <>
                     {
-                        comments && (
+                        numComments ? (
                             <>
                                 <Stack
                                     spacing={2}
@@ -69,6 +69,9 @@ export const Comments = ({ numComments, comments, handleLoadComments, isLoadingC
                                         </>
                                     ))
                                 }
+                            </>
+                        ) : (
+                            <>
                             </>
                         )
 

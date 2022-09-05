@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Routes, Route, useLocation } from "react-router-dom"
 import { useSelector, useDispatch } from 'react-redux'
 
+
 import InfiniteScroll from "react-infinite-scroll-component"
 import CssBaseline from '@mui/material/CssBaseline'
 import Grid from '@mui/material/Grid'
@@ -22,6 +23,8 @@ import { useQueryPosts } from './hooks/useQueryPosts'
 import { selectProfile, getProfile } from './pages/profile/profileSlice'
 import { categories } from './api/categoriesApi'
 import { Error404 } from './pages/error404'
+import { anythinWithSuscription } from './containers/anythinWithSuscription'
+import { fetchPost } from './pages/post/postApi'
 
 function App() {
   const theme = createTheme()
@@ -31,6 +34,7 @@ function App() {
   const [isLoadingPosts, setIsLoadingPosts] = useState(true)
   const location = useLocation()
 
+  //const PostWithAnything = anythinWithSuscription(Post, fetchPost)
 
   useEffect(() => {
     dispatch(getProfile())
@@ -48,11 +52,9 @@ function App() {
     if (data) setIsLoadingPosts(false)
   }, [data])
 
-
   useEffect(() => {
     if (location.pathname === '/' && profile?.user?.metadata?.profile?.name) document.title = 'Blog de ' + profile?.user?.metadata?.profile?.name
   }, [location, profile])
-
 
   return (
     <ThemeProvider theme={theme}>

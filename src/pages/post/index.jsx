@@ -12,29 +12,19 @@ import { Markdown } from '../../components/markdown'
 import { FeedSkeleton } from '../../components/skeletons/FeedSkeleton'
 import { PostStatics } from '../../components/postStatics'
 import { MyAvatar } from '../../components/avatar'
-import { Tags } from '../../components/tags';
-import { useScrollUp } from '../../hooks/useScrollUp'
-import { Comments } from '../../components/comments';
+import { Tags } from '../../components/tags'
+
+import { Comments } from '../../components/comments'
 import { Error404 } from '../error404'
+import { useQueryWithSlug } from '../../hooks/useQueryWithSlug'
 
 export const Post = () => {
     const { slug } = useParams()
-    const [post, setPost] = useState([])
     const [comments, setComments] = useState([])
-    const [isLoading, setIsLoading] = useState(true)
     const [isLoadingComments, setIsLoadingComments] = useState(false)
-    const [is404, setIs404] = useState(false);
 
-    const loadPost = async (slug) => {
-        setIs404(false)
-        const content = await fetchPost(slug)
-        if (content.data.result) {
-            setPost(content.data.result)
-        } else {
-            setPost(content.data)
-        }
-
-    }
+    const { data, isLoading, is404 } = useQueryWithSlug(fetchPost, slug)
+    const post = data
 
     const handleLoadComments = async () => {
         setIsLoadingComments(true)
@@ -44,22 +34,8 @@ export const Post = () => {
     }
 
     useEffect(() => {
-        useScrollUp()
-        loadPost(slug)
-    }, [slug])
-
-    useEffect(() => {
-        if (post?.title) {
-            setIsLoading(false)
-            document.title = post?.title
-        } else if (post?.error?.code) {
-            setIsLoading(false)
-            setIs404(true)
-        }
-    }, [post])
-
-    useEffect(() => {
-    }, [comments])
+        console.log(data)
+    }, [data])
 
     return (
         <Grid
@@ -82,23 +58,23 @@ export const Post = () => {
                         <>
                             <MyAvatar type="small" />
                             <Typography variant="h6" gutterBottom={true}>
-                                {post?.title ? post?.title : ''}
+                                {post?.result?.title ? post.result.title : ''}
                             </Typography>
                             <Typography variant="subtitle1" color="text.secondary">
-                                {moment(post?.created, "YYYYMMDD").locale('es').fromNow()}
+                                {moment(post?.result?.created, "YYYYMMDD").locale('es').fromNow()}
                             </Typography>
                             <Divider />
                             <Markdown className="markdown">
-                                {post?.body ? post?.body : ''}
+                                {post?.result?.body ? post.result.body : ''}
                             </Markdown>
-                            <Tags tags={post?.json_metadata?.tags} />
+                            <Tags tags={post?.result?.json_metadata?.tags} />
                             <PostStatics
-                                votes={post?.active_votes}
-                                comments={post?.children}
-                                amount={(parseFloat(post?.author_payout_value) + parseFloat(post?.curator_payout_value)).toFixed(2)}
+                                votes={post?.result?.active_votes}
+                                comments={post?.result?.children}
+                                amount={(parseFloat(post?.result?.author_payout_value) + parseFloat(post?.result?.curator_payout_value)).toFixed(2)}
                             />
                             <Comments
-                                numComments={post?.children}
+                                numComments={post?.result?.children}
                                 handleLoadComments={handleLoadComments}
                                 comments={comments}
                                 isLoadingComments={isLoadingComments}

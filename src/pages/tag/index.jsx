@@ -14,7 +14,7 @@ import { useQueryWithSlug } from '../../hooks/useQueryWithSlug'
 export const Tag = (props) => {
     const { tag } = useParams()
 
-    const { data, isLoading, is404, isNotResults } = useQueryWithSlug(fetchTag, tag)
+    const { data, isLoading, isNotResults } = useQueryWithSlug(fetchTag, tag)
     const posts = data
 
     useEffect(() => {

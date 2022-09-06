@@ -31,7 +31,6 @@ export const useQueryWithSlug = (dataSource, slug = null) => {
         } else if (data?.results?.length) {
             document.title = slug
             setIsLoading(false)
-            console.log(data?.results?.length)
         } else if (data?.results?.length === 0) {
             setIsNotResults(true)
             setIsLoading(false)

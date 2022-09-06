@@ -23,7 +23,6 @@ import { useQueryPosts } from './hooks/useQueryPosts'
 import { selectProfile, getProfile } from './pages/profile/profileSlice'
 import { categories } from './api/categoriesApi'
 import { Error404 } from './pages/error404'
-import { anythinWithSuscription } from './containers/anythinWithSuscription'
 import { fetchPost } from './pages/post/postApi'
 
 function App() {

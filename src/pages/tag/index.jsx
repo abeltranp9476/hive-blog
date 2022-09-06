@@ -16,41 +16,9 @@ export const Tag = (props) => {
 
     const { data, isLoading, is404, isNotResults } = useQueryWithSlug(fetchTag, tag)
     const posts = data
-    //const [posts, setPosts] = useState([])
-    //const [isLoading, setIsLoading] = useState(true)
-    //const [isNotResults, setIsNotResults] = useState(false)
 
     useEffect(() => {
     }, [data])
-
-
-    /*
-    const getTag = async (slug) => {
-        setIsNotResults(false)
-        setIsLoading(true)
-        const content = await fetchTag(slug)
-        setPosts(content.data)
-    }
-    */
-
-    /*
-    useEffect(() => {
-        useScrollUp();
-        document.title = tag
-        getTag(tag)
-    }, [tag])
-    */
-
-    /*
-    useEffect(() => {
-        if (posts?.results?.length) {
-            setIsLoading(false);
-        } else {
-            setIsLoading(false);
-            setIsNotResults(true)
-        }
-    }, [posts])
-    */
 
     return (
         <Grid

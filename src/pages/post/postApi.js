@@ -14,7 +14,7 @@ export const fetchPost = async (slug) => {
   return await api.post('', jsonrpc)
 }
 
-export const fecthComments = async (slug) => {
+export const fetchComments = async (slug) => {
   const jsonrpc = {
     "jsonrpc": "2.0",
     "method": "bridge.get_discussion",

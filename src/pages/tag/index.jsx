@@ -8,35 +8,17 @@ import Divider from '@mui/material/Divider'
 import { MyCard } from '../../components/myCard'
 import { fetchTag } from './tagApi'
 import { FeedSkeleton } from '../../components/skeletons/FeedSkeleton'
-import { useScrollUp } from '../../hooks/useScrollUp'
+import { useQueryWithSlug } from '../../hooks/useQueryWithSlug'
+
 
 export const Tag = (props) => {
     const { tag } = useParams()
-    const [posts, setPosts] = useState([])
-    const [isLoading, setIsLoading] = useState(true)
-    const [isNotResults, setIsNotResults] = useState(false)
 
-    const getTag = async (slug) => {
-        setIsNotResults(false)
-        setIsLoading(true)
-        const content = await fetchTag(slug)
-        setPosts(content.data)
-    }
+    const { data, isLoading, isNotResults } = useQueryWithSlug(fetchTag, tag)
+    const posts = data
 
     useEffect(() => {
-        useScrollUp();
-        document.title = tag
-        getTag(tag)
-    }, [tag])
-
-    useEffect(() => {
-        if (posts?.results?.length) {
-            setIsLoading(false);
-        } else {
-            setIsLoading(false);
-            setIsNotResults(true)
-        }
-    }, [posts])
+    }, [data])
 
     return (
         <Grid
@@ -67,7 +49,7 @@ export const Tag = (props) => {
                                 </Typography>
                             </Grid>
                         ) : (
-                            posts?.results?.map((post) => (
+                            posts?.results.map((post) => (
                                 <MyCard
                                     key={post.id}
                                     title={post.title}

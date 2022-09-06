@@ -1,4 +1,5 @@
 import { useMemo } from "react"
+
 import { useInfiniteQuery } from "@tanstack/react-query"
 import { fetchPosts } from '../api/postApi'
 

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
+
 import { useScrollUp } from './useScrollUp'
 
 export const useQueryWithSlug = (dataSource, slug = null) => {
@@ -8,6 +9,8 @@ export const useQueryWithSlug = (dataSource, slug = null) => {
     const [isNotResults, setIsNotResults] = useState(false)
 
     const getData = async (slug) => {
+        setIsLoading(true)
+        setIsNotResults(false)
         const content = await dataSource(slug)
         setData(content.data)
     }
@@ -17,14 +20,24 @@ export const useQueryWithSlug = (dataSource, slug = null) => {
     }, [slug])
 
     useEffect(() => {
+        useScrollUp()
+
         if (data?.result?.title) {
-            useScrollUp()
-            setIsLoading(false)
             document.title = data?.result?.title
-        } else if (data?.error?.code) {
             setIsLoading(false)
+        } else if (data?.error?.code) {
             setIs404(true)
+            setIsLoading(false)
+        } else if (data?.results?.length) {
+            document.title = slug
+            setIsLoading(false)
+            console.log(data?.results?.length)
+        } else if (data?.results?.length === 0) {
+            setIsNotResults(true)
+            setIsLoading(false)
         }
+
+
     }, [data])
 
     return { data, isLoading, is404, isNotResults }

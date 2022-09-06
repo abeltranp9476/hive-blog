@@ -21,8 +21,7 @@ export const Tag = (props) => {
     //const [isNotResults, setIsNotResults] = useState(false)
 
     useEffect(() => {
-        console.log(isLoading)
-    }, [data, isLoading])
+    }, [data])
 
 
     /*

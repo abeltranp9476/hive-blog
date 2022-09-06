@@ -6,7 +6,7 @@ import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import Divider from '@mui/material/Divider'
 
-import { fetchPost, fecthComments } from './postApi'
+import { fetchPost, fetchComments } from './postApi'
 import '../../style.css'
 import { Markdown } from '../../components/markdown'
 import { FeedSkeleton } from '../../components/skeletons/FeedSkeleton'
@@ -17,24 +17,21 @@ import { Tags } from '../../components/tags'
 import { Comments } from '../../components/comments'
 import { Error404 } from '../error404'
 import { useQueryWithSlug } from '../../hooks/useQueryWithSlug'
+import { useLoaderComments } from '../../hooks/useLoaderComments'
 
 export const Post = () => {
     const { slug } = useParams()
-    const [comments, setComments] = useState([])
-    const [isLoadingComments, setIsLoadingComments] = useState(false)
-
     const { data, isLoading, is404 } = useQueryWithSlug(fetchPost, slug)
+
+    const {
+        comments,
+        isLoadingComments,
+        handleLoadComments
+    } = useLoaderComments(fetchComments, slug)
+
     const post = data
 
-    const handleLoadComments = async () => {
-        setIsLoadingComments(true)
-        const content = await fecthComments(slug)
-        setComments(content.data.result)
-        setIsLoadingComments(false)
-    }
-
     useEffect(() => {
-        console.log(data)
     }, [data])
 
     return (

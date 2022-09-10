@@ -4,6 +4,7 @@ import Grid from '@mui/material/Grid'
 import Card from '@mui/material/Card'
 import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent'
+import { TransitionGroup } from 'react-transition-group';
 
 import { useNearScreen } from '../../hooks/useNearScreen'
 import { Markdown } from '../markdown'
@@ -27,7 +28,8 @@ export const MyCard = (props) => {
                 <CardActionArea ref={element}>
                     <Card sx={{ display: 'flex' }}>
                         {
-                            show && <CardContent sx={{ flex: 1 }}>
+                            show &&
+                            <CardContent sx={{ flex: 1 }}>
                                 <Typography component="h2" variant="h5">
                                     {title}
                                 </Typography>

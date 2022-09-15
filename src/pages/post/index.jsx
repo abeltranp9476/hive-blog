@@ -69,6 +69,7 @@ export const Post = () => {
                                 votes={post?.result?.active_votes}
                                 comments={post?.result?.children}
                                 amount={(parseFloat(post?.result?.author_payout_value) + parseFloat(post?.result?.curator_payout_value)).toFixed(2)}
+                                permlink={post?.result?.permlink}
                             />
                             <Comments
                                 numComments={post?.result?.children}

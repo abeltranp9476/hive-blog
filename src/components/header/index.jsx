@@ -7,7 +7,7 @@ import Link from '@mui/material/Link';
 import { MyLink } from '../mylink';
 
 export const Header = (props) => {
-    const { sections, title } = props;
+    const { sections, title, userName } = props;
 
     return (
         <>
@@ -29,11 +29,20 @@ export const Header = (props) => {
                         {title}
                     </MyLink>
                 </Typography>
-                <Link href={'https://ecency.com/@' + import.meta.env.VITE_HIVE_ACCOUNT + '/posts'}>
-                    <Button variant="outlined" size="small">
-                        Perfil
-                    </Button>
-                </Link>
+                {
+                    userName ? (
+                        <>
+                            {userName}
+                        </>
+                    ) : (
+                        <Link href={'https://hivesigner.com/oauth2/authorize?client_id=abeltranp9476&redirect_uri=' + import.meta.env.VITE_APP_URL + '/sign' + '&scope=vote,comment'}>
+                            <Button variant="outlined" size="small">
+                                Autenticarse
+                            </Button>
+                        </Link>
+                    )
+                }
+
             </Toolbar>
             <Toolbar
                 component="nav"

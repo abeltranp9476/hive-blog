@@ -1,8 +1,10 @@
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Slider from '@mui/material/Slider';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+import { FavoriteBorder, ChatBubbleOutline, SavingsOutlined } from '@mui/icons-material';
 
-import { ChatBubbleOutline, SavingsOutlined } from '@mui/icons-material';
 import { useSign } from '../../hooks/useSign';
 import { Vote } from '../vote'
 import { useVote } from '../../hooks/useVote';
@@ -46,7 +48,12 @@ export const PostStatics = (props) => {
           fullWidth={true}
           maxWidth="md"
           title="Votar publicación"
-          actionTitle="Votar"
+          actionTitle={(
+            <>
+              <FavoriteBorder sx={styleIcon} />
+              Votar
+            </>
+          )}
           open={voteState}
           handleAction={e => { handleVote({ permlink: permlink, weight: weight * 100 }) }}
           handleClose={handleCloseVote}
@@ -71,8 +78,12 @@ export const PostStatics = (props) => {
       }
       {
         userName ? (
-          <div onClick={handleShowVote}>
-            <Vote votes={votes} styleText={styleText} styleIcon={styleIcon} />
+          <div className="clicable" onClick={handleShowVote}>
+            <Tooltip title="Votar">
+              <IconButton>
+                <Vote votes={votes} styleText={styleText} styleIcon={styleIcon} />
+              </IconButton>
+            </Tooltip>
           </div>
         ) : (
           <Vote votes={votes} styleText={styleText} styleIcon={styleIcon} />
@@ -81,6 +92,6 @@ export const PostStatics = (props) => {
 
       <Typography sx={styleText}><ChatBubbleOutline sx={styleIcon} />{comments}</Typography>
       <Typography sx={styleText}><SavingsOutlined sx={styleIcon} />${amount}</Typography>
-    </Stack>
+    </Stack >
   )
 }

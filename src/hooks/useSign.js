@@ -11,7 +11,9 @@ export const useSign = () => {
         tokenUtils.setAuthenticationToken(userName + ':' + token)
     } else {
         userName = tokenUtils.getUserId()
-        token = tokenUtils.getAuthenticationToken().split(':')[1]
+        token = tokenUtils.getAuthenticationToken()
+            ? tokenUtils.getAuthenticationToken().split(':')[1]
+            : ''
     }
 
     return { userName, token, expiresIn }

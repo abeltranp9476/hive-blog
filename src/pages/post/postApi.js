@@ -38,7 +38,7 @@ export const setVote = async ({ permlink, weight }) => {
         "voter": userName,
         "author": HIVE_USER_ACCOUNT,
         "permlink": permlink,
-        "weight": 10000
+        "weight": weight
       }]
     ]
   }

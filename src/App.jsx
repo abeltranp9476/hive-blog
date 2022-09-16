@@ -26,6 +26,7 @@ import { Error404 } from './pages/error404'
 import { fetchPost } from './pages/post/postApi'
 import { Sign } from './pages/sign'
 import { useSign } from './hooks/useSign'
+import { Logout } from './pages/logout'
 
 function App() {
   const theme = createTheme()
@@ -93,6 +94,16 @@ function App() {
                 <main>
                   <Grid container={true} spacing={5} sx={{ mt: 3 }}>
                     <Sign />
+                    <Sidebar title="Acerca de" />
+                  </Grid>
+                </main>
+              }
+              />
+
+              <Route path="/logout" element={
+                <main>
+                  <Grid container={true} spacing={5} sx={{ mt: 3 }}>
+                    <Logout />
                     <Sidebar title="Acerca de" />
                   </Grid>
                 </main>

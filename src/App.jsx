@@ -24,16 +24,19 @@ import { selectProfile, getProfile } from './pages/profile/profileSlice'
 import { categories } from './api/categoriesApi'
 import { Error404 } from './pages/error404'
 import { fetchPost } from './pages/post/postApi'
+import { Sign } from './pages/sign'
+import { useSign } from './hooks/useSign'
+import { Logout } from './pages/logout'
 
 function App() {
   const theme = createTheme()
   const profile = useSelector(selectProfile)
+  const { userName } = useSign()
   const dispatch = useDispatch()
   const [isLoading, setIsLoading] = useState(true)
   const [isLoadingPosts, setIsLoadingPosts] = useState(true)
   const location = useLocation()
 
-  //const PostWithAnything = anythinWithSuscription(Post, fetchPost)
 
   useEffect(() => {
     dispatch(getProfile())
@@ -85,6 +88,26 @@ function App() {
                   </main>
                 </InfiniteScroll>
               } />
+
+              <Route path="/sign" element={
+                <main>
+                  <Grid container={true} spacing={5} sx={{ mt: 3 }}>
+                    <Sign />
+                    <Sidebar title="Acerca de" />
+                  </Grid>
+                </main>
+              }
+              />
+
+              <Route path="/logout" element={
+                <main>
+                  <Grid container={true} spacing={5} sx={{ mt: 3 }}>
+                    <Logout />
+                    <Sidebar title="Acerca de" />
+                  </Grid>
+                </main>
+              }
+              />
 
               <Route path="/tag/:tag" element={
                 <main>

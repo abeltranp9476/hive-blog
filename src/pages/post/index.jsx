@@ -18,6 +18,7 @@ import { Comments } from '../../components/comments'
 import { Error404 } from '../error404'
 import { useQueryWithSlug } from '../../hooks/useQueryWithSlug'
 import { useLoaderComments } from '../../hooks/useLoaderComments'
+import { useSign } from '../../hooks/useSign';
 
 export const Post = () => {
     const { slug } = useParams()
@@ -69,6 +70,7 @@ export const Post = () => {
                                 votes={post?.result?.active_votes}
                                 comments={post?.result?.children}
                                 amount={(parseFloat(post?.result?.author_payout_value) + parseFloat(post?.result?.curator_payout_value)).toFixed(2)}
+                                permlink={post?.result?.permlink}
                             />
                             <Comments
                                 numComments={post?.result?.children}

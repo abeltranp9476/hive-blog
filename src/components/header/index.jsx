@@ -1,13 +1,38 @@
+import { useState } from 'react'
 import PropTypes from 'prop-types';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import Box from '@mui/material/Box';
+import Tooltip from '@mui/material/Tooltip';
+import IconButton from '@mui/material/IconButton';
+import Avatar from '@mui/material/Avatar';
 
 import { MyLink } from '../mylink';
+import { useSign } from '../../hooks/useSign'
 
 export const Header = (props) => {
     const { sections, title } = props;
+
+    const [anchorElUser, setAnchorElUser] = useState(null);
+
+    const { userName, logout } = useSign()
+
+    const handleOpenUserMenu = (event) => {
+        setAnchorElUser(event.currentTarget);
+    };
+
+    const handleCloseUserMenu = () => {
+        setAnchorElUser(null);
+    };
+
+    const handleLogout = () => {
+        logout()
+        handleCloseUserMenu()
+    }
 
     return (
         <>
@@ -29,11 +54,45 @@ export const Header = (props) => {
                         {title}
                     </MyLink>
                 </Typography>
-                <Link href={'https://ecency.com/@' + import.meta.env.VITE_HIVE_ACCOUNT + '/posts'}>
-                    <Button variant="outlined" size="small">
-                        Perfil
-                    </Button>
-                </Link>
+                {
+                    userName ? (
+                        <Box sx={{ flexGrow: 0 }}>
+                            <Tooltip title="Opciones de usuarios">
+                                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                                </IconButton>
+                            </Tooltip>
+                            <Menu
+                                sx={{ mt: '45px' }}
+                                id="menu-appbar"
+                                anchorEl={anchorElUser}
+                                anchorOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'right',
+                                }}
+                                keepMounted
+                                transformOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'right',
+                                }}
+                                open={Boolean(anchorElUser)}
+                                onClose={handleCloseUserMenu}
+                            >
+                                <MenuItem onClick={handleLogout}>
+                                    <Typography textAlign="center">Salir</Typography>
+                                </MenuItem>
+
+                            </Menu>
+                        </Box>
+                    ) : (
+                        <Link href={'https://hivesigner.com/oauth2/authorize?client_id=abeltranp9476&redirect_uri=' + import.meta.env.VITE_APP_URL + '/sign' + '&scope=vote,comment'}>
+                            <Button variant="outlined" size="small">
+                                Autenticarse
+                            </Button>
+                        </Link>
+                    )
+                }
+
             </Toolbar>
             <Toolbar
                 component="nav"

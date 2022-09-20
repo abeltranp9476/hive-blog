@@ -16,7 +16,7 @@ import { Loader } from '../loader'
 
 export const PostStatics = (props) => {
   const { votes, amount, comments, permlink } = props;
-  const { userName } = useSign()
+  const { userName, token } = useSign()
 
   const {
     voteState,
@@ -57,7 +57,14 @@ export const PostStatics = (props) => {
             </>
           )}
           open={voteState}
-          handleAction={e => { handleVote({ permlink: permlink, weight: weight * 100 }) }}
+          handleAction={e => {
+            handleVote({
+              permlink: permlink,
+              weight: weight * 100,
+              userName,
+              token,
+            })
+          }}
           handleClose={handleCloseVote}
         >
           {

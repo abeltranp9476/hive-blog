@@ -1,4 +1,3 @@
-import { useSign } from '../../hooks/useSign'
 import { api, HIVE_USER_ACCOUNT, HIVE_SIGNER_BROADCAST } from '../../utils/api'
 
 export const fetchPost = async (slug) => {
@@ -29,8 +28,7 @@ export const fetchComments = async (slug) => {
   return await api.post('', jsonrpc)
 }
 
-export const setVote = async ({ permlink, weight }) => {
-  const { userName, token } = useSign()
+export const setVote = async ({ permlink, weight, userName, token }) => {
   const payload = {
     "operations": [
       ["vote", {

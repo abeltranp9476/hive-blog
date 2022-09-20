@@ -4,11 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import { tokenUtils } from '../utils/authentication'
 
 export const useSign = () => {
+    const [userName, setUserName] = useState('')
+    const [token, setToken] = useState('')
     const search = window.location.search
     const params = new URLSearchParams(search)
     const expiresIn = params.get('expires_in')
-    const [userName, setUserName] = useState('')
-    const [token, setToken] = useState('')
+
 
     const navigate = useNavigate();
 

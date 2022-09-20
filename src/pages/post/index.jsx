@@ -18,6 +18,7 @@ import { Comments } from '../../components/comments'
 import { Error404 } from '../error404'
 import { useQueryWithSlug } from '../../hooks/useQueryWithSlug'
 import { useLoaderComments } from '../../hooks/useLoaderComments'
+import { useSign } from '../../hooks/useSign';
 
 export const Post = () => {
     const { slug } = useParams()

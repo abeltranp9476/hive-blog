@@ -37,7 +37,6 @@ function App() {
   const [isLoadingPosts, setIsLoadingPosts] = useState(true)
   const location = useLocation()
 
-  //const PostWithAnything = anythinWithSuscription(Post, fetchPost)
 
   useEffect(() => {
     dispatch(getProfile())
@@ -67,7 +66,7 @@ function App() {
       ) : (
         <>
           <Container maxWidth="lg">
-            <Header title="Feed pricipal" sections={categories} userName={userName} />
+            <Header title="Feed pricipal" sections={categories} />
 
             <Routes>
 

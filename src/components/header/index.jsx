@@ -15,11 +15,11 @@ import { MyLink } from '../mylink';
 import { useSign } from '../../hooks/useSign'
 
 export const Header = (props) => {
-    const { sections, title, userName } = props;
+    const { sections, title } = props;
 
     const [anchorElUser, setAnchorElUser] = useState(null);
 
-    const { logout } = useSign()
+    const { userName, logout } = useSign()
 
     const handleOpenUserMenu = (event) => {
         setAnchorElUser(event.currentTarget);

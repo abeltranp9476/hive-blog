@@ -35,8 +35,6 @@ export const useSign = () => {
         tokenParam = params.get('access_token')
 
         if (!tokenParam && !userNameParam) setValues()
-
-        console.log('Desde hook: ' + userName)
     }, [])
 
 

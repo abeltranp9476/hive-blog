@@ -26,10 +26,5 @@ export const useVote = () => {
         setWeight(value)
     }
 
-    return {
-        voteState, handleShowVote,
-        handleCloseVote, handleVote,
-        weight, handleVoteValue,
-        isLoading
-    }
+    return { voteState, handleShowVote, handleCloseVote, handleVote, weight, handleVoteValue, isLoading }
 }

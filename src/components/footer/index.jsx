@@ -6,12 +6,10 @@ import Link from '@mui/material/Link';
 function Copyright() {
     return (
         <Typography variant="body2" color="text.secondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="https://mui.com/">
-                Your Website
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
+            <Link color="inherit" href="https://github.com/abeltranp9476/hive-blog">
+                Blog - Hive
+            </Link>
+            {' project OpenSource has repository on GitHub'}
         </Typography>
     );
 }

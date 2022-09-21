@@ -10,6 +10,7 @@ import Box from '@mui/material/Box';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import Avatar from '@mui/material/Avatar';
+import { Login } from '@mui/icons-material';
 
 import { MyLink } from '../mylink';
 import { useSign } from '../../hooks/useSign'
@@ -87,7 +88,7 @@ export const Header = (props) => {
                     ) : (
                         <Link href={'https://hivesigner.com/oauth2/authorize?client_id=abeltranp9476&redirect_uri=' + import.meta.env.VITE_APP_URL + '/sign' + '&scope=vote,comment'}>
                             <Button variant="outlined" size="small">
-                                Autenticarse
+                                <Login />
                             </Button>
                         </Link>
                     )

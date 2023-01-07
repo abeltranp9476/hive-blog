@@ -8,7 +8,6 @@ import CssBaseline from '@mui/material/CssBaseline'
 import Grid from '@mui/material/Grid'
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles'
-import Stack from '@mui/material/Stack';
 
 import { Header } from './components/header'
 import { Footer } from './components/footer'
@@ -23,7 +22,6 @@ import { useQueryPosts } from './hooks/useQueryPosts'
 import { selectProfile, getProfile } from './pages/profile/profileSlice'
 import { categories } from './api/categoriesApi'
 import { Error404 } from './pages/error404'
-import { fetchPost } from './pages/post/postApi'
 import { Sign } from './pages/sign'
 import { useSign } from './hooks/useSign'
 import { Logout } from './pages/logout'

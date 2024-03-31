@@ -10,10 +10,8 @@ import { fetchTag } from './tagApi'
 import { FeedSkeleton } from '../../components/skeletons/FeedSkeleton'
 import { useQueryWithSlug } from '../../hooks/useQueryWithSlug'
 
-
 export const Tag = (props) => {
     const { tag } = useParams()
-
     const { data, isLoading, isNotResults } = useQueryWithSlug(fetchTag, tag)
     const posts = data
 

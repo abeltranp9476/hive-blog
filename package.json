@@ -15,7 +15,7 @@
     "@mui/material": "^5.9.3",
     "@reduxjs/toolkit": "^1.8.5",
     "@tanstack/react-query": "^4.0.10",
-    "axios": "^0.27.2",
+    "axios": "^1.7.4",
     "intersection-observer": "^0.7.0",
     "markdown-to-jsx": "^7.1.7",
     "moment": "^2.29.4",
